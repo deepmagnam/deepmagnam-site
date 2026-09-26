@@ -1,0 +1,5 @@
+# PLACEHOLDER DOMAIN: replace https://www.deepmagnam.com with the real domain (see SITE_URL in src/config/site.ts).
+User-agent: *
+Allow: /
+
+Sitemap: https://www.deepmagnam.com/sitemap.xml

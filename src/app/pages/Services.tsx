@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { mechanicalServices, itServices } from "../data/servicesData";
 import { ChevronRight } from "lucide-react";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Services() {
+  usePageMeta("Engineering & Web Services", "Outsourced CAD, reverse engineering and machine design, plus custom web apps, e-commerce and cloud deployment. One team for engineering and software projects.");
   return (
     <div className="pt-20">
       {/* Hero Section */}

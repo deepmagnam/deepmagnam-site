@@ -1,22 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deepmagnam | Mechanical CAD Design &amp; Web Development</title>
+    <meta name="description" content="Mechanical CAD design, reverse engineering, product development and machine design, plus custom websites, web apps and e-commerce for clients worldwide." />
+    <meta name="theme-color" content="#020617" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Portfolio Website Design</title>
-      <meta name="description" content="Showcasing mechanical engineering and IT solutions, this portfolio website highlights services, projects, and expertise to attract potential clients." />
-      <meta name="robots" content="noindex, nofollow" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-      
-    </head>
+    <!--
+      PLACEHOLDER DOMAIN: https://www.deepmagnam.com is not live yet. When the real domain is known,
+      replace every occurrence of it in this file (canonical, og:url, og:image, twitter:image, JSON-LD),
+      in public/robots.txt and public/sitemap.xml, and update SITE_URL in src/config/site.ts.
+    -->
+    <link rel="canonical" href="https://www.deepmagnam.com/" />
 
-    <body>
-      
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-      
-    </body>
-  </html>
-  
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Deepmagnam" />
+    <meta property="og:title" content="Deepmagnam | Mechanical CAD Design &amp; Web Development" />
+    <meta property="og:description" content="Mechanical CAD design, reverse engineering, product development and machine design, plus custom websites, web apps and e-commerce for clients worldwide." />
+    <meta property="og:url" content="https://www.deepmagnam.com/" />
+    <meta property="og:image" content="https://www.deepmagnam.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Deepmagnam | Mechanical CAD Design &amp; Web Development" />
+    <meta name="twitter:description" content="Mechanical CAD design, reverse engineering, product development and machine design, plus custom websites, web apps and e-commerce for clients worldwide." />
+    <meta name="twitter:image" content="https://www.deepmagnam.com/og-image.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Deepmagnam",
+        "url": "https://www.deepmagnam.com/",
+        "logo": "https://www.deepmagnam.com/logo.png",
+        "description": "Mechanical CAD design, reverse engineering, product development and machine design, plus custom websites, web apps and e-commerce for clients worldwide.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coimbatore",
+          "addressRegion": "Tamil Nadu",
+          "addressCountry": "IN"
+        },
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            {
+              "@type": "OfferCatalog",
+              "name": "Mechanical Design Services",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Core Design Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "2D to 3D CAD Conversion"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "3D to 2D Manufacturing Drawings"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "STL to CAD Conversion (Reverse modeling)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Unit Conversion & Design Scaling (mm ↔ inch, etc.)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "CAD Drafting & Detailing"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Product Development",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "New Product Development (Concept to Prototype)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Design for Manufacturing (DFM)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Design Optimization & Cost Reduction"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Concept Design & Industrial Design Support"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Prototype Development"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Reverse Engineering",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Physical Part to CAD Modeling"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "CAD Creation from Photos / Measurements"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Legacy Drawing Reconstruction"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Redesign & Improvement of Existing Products"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Assembly & Mechanical Design",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Assembly Design & Modeling"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Exploded Views & Bill of Materials (BOM)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mechanism Design (linkages, motion systems)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Special Purpose Machine (SPM) Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Jig & Fixture Design"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "3D Printing & Prototyping",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "3D Printing Design (FDM / SLA ready files)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "STL File Repair & Optimization"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Rapid Prototyping Support"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Lightweight & Functional Part Design"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Advanced CAD Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Parametric Modeling"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Sheet Metal Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Surface Modeling"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Weldment Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "GD&T (Geometric Dimensioning & Tolerancing)"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Engineering Support Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Technical Documentation"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Manufacturing Drawings & Shop Drawings"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Design Validation Support"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Vendor / Production Support Drawings"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Specialized Services (High Value)",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "E-Vehicle Component Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Industrial Equipment Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Portable Structures (like Gantry Crane, Trolley, etc.)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Automation & Custom Machine Design"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "@type": "OfferCatalog",
+              "name": "IT & Web Development Services",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Core Web Development Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Design & Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Web Application Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Frontend Development (Modern UI)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Backend Development (APIs & Logic)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Full Stack Development"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "E-Commerce Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom E-Commerce Website Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Shopping Cart & Checkout Systems"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Payment Gateway Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Multi-Vendor Marketplace Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Product Management Systems"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "UI/UX & Design Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "User Interface (UI) Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "User Experience (UX) Optimization"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Responsive Design (Mobile / Tablet / Desktop)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Wireframing & Prototyping"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Redesign & Revamp"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Performance & Optimization",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Speed Optimization"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SEO-Friendly Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Core Web Vitals Optimization"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Code Optimization & Refactoring"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Image & Asset Optimization"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Security & Maintenance",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Maintenance & Support"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Security Updates & Monitoring"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Bug Fixing & Issue Resolution"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Backup & Recovery Solutions"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SSL & Data Protection Setup"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Deployment & Cloud Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Hosting Setup & Configuration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Cloud Deployment (AWS / Vercel / etc.)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Domain & DNS Management"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "CI/CD Pipeline Setup"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Server Management"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Integration Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "API Development & Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Third-Party Service Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Payment & SMS/Email Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "CRM & ERP Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Social Media Integration"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Admin & Business Tools",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Admin Dashboard Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Analytics & Reporting Systems"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Role-Based Access Systems"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "CMS Development (WordPress / Custom)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Data Management Systems"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Modern Web Solutions",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Progressive Web Apps (PWA)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SaaS Product Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Real-Time Applications (Chat, Live Updates)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Single Page Applications (SPA)"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Microservices Architecture"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Specialized High-Value Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Startup MVP Development"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Scalable System Architecture Design"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI/Chatbot Integration"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Automation Tools & Workflow Systems"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Business Platforms"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    </script>
+
+    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

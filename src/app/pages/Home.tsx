@@ -6,8 +6,11 @@ import { projects } from "../data/mockData";
 import heroBg1 from "../../imports/b70735dbc9468a93786377ae0216ef57__1_.jpg";
 import heroBg2 from "../../imports/05d136c9dc2d333424b5956b8db8faba.jpg";
 import heroBg3 from "../../imports/Can_Consultants_Streamline_Organisational_Changes_.jpg";
+import { usePageMeta } from "../hooks/usePageMeta";
+import { SITE_DESCRIPTION } from "../../config/site";
 
 export function Home() {
+  usePageMeta(null, SITE_DESCRIPTION);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [heroBg1, heroBg2, heroBg3];
 

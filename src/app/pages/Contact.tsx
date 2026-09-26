@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Contact() {
+  usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam. We'd love to hear from you and will get back to you as soon as possible.");
   const [formData, setFormData] = useState({
     name: "",
     email: "",

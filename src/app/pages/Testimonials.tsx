@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
 import { testimonials } from "../data/mockData";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Testimonials() {
+  usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam.");
   return (
     <div className="pt-20">
       {/* Hero Section */}

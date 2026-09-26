@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { Link, useLocation } from "react-router";
 import { ArrowLeft } from "lucide-react";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function NotFound() {
+  usePageMeta("Page Not Found", "The page you're looking for may have been moved or never existed.");
   const location = useLocation();
 
   return (

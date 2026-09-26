@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { processSteps } from "../data/mockData";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Process() {
+  usePageMeta("Process", "Our proven workflow: requirement analysis, concept design, development and modeling, testing and optimization, and final delivery.");
   return (
     <div className="pt-20">
       {/* Hero Section */}
