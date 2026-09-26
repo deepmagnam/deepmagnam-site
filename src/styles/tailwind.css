@@ -8,3 +8,21 @@
     scroll-behavior: smooth;
   }
 }
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Fixed nav height, shared by the nav itself, page top padding and sticky
+   offsets. Static so there's no layout shift on load. md = 48rem. */
+:root {
+  --nav-height: 64px;
+}
+@media (min-width: 48rem) {
+  :root {
+    --nav-height: 80px;
+  }
+}

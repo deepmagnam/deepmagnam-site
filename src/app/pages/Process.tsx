@@ -6,7 +6,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export function Process() {
   usePageMeta("Process", "Our proven workflow: requirement analysis, concept design, development and modeling, testing and optimization, and final delivery.");
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -24,7 +24,7 @@ export function Process() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Our Process
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               A proven workflow that ensures quality, efficiency, and client satisfaction
             </p>
           </motion.div>

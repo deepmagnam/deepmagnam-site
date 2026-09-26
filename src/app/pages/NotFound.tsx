@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { Link, useLocation } from "react-router";
 import { ArrowLeft } from "lucide-react";
@@ -7,8 +8,16 @@ export function NotFound() {
   usePageMeta("Page Not Found", "The page you're looking for may have been moved or never existed.");
   const location = useLocation();
 
+  useEffect(() => {
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex";
+    document.head.appendChild(robots);
+    return () => robots.remove();
+  }, []);
+
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500 rounded-full blur-3xl" />

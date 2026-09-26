@@ -5,7 +5,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export function Technologies() {
   usePageMeta("Technologies", "Industry-leading tools we use: SolidWorks, AutoCAD, CATIA and Fusion 360 for mechanical design, and React, Next.js, Node.js and TypeScript for software.");
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -23,7 +23,7 @@ export function Technologies() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Technologies We Use
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Industry-leading tools and platforms for exceptional results
             </p>
           </motion.div>
@@ -98,12 +98,12 @@ export function Technologies() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-200 rounded-xl p-6 text-center hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
+                className="bg-white border border-slate-200 rounded-xl p-6 text-center hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                   {tech.icon}
                 </div>
-                <h3 className="text-slate-900 font-semibold group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-slate-900 font-semibold group-hover:text-cyan-700 transition-colors">
                   {tech.name}
                 </h3>
               </motion.div>
@@ -174,7 +174,7 @@ export function Technologies() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-emerald-900/30 to-slate-900 border border-emerald-500/30 rounded-xl p-8"
+              className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-500/30 rounded-xl p-8"
             >
               <div className="text-4xl mb-4">🚀</div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Performance</h3>
@@ -189,7 +189,7 @@ export function Technologies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-cyan-900/30 to-slate-900 border border-cyan-500/30 rounded-xl p-8"
+              className="bg-gradient-to-br from-cyan-50 to-white border border-cyan-500/30 rounded-xl p-8"
             >
               <div className="text-4xl mb-4">🔧</div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Versatility</h3>
@@ -204,7 +204,7 @@ export function Technologies() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-blue-900/30 to-slate-900 border border-blue-500/30 rounded-xl p-8"
+              className="bg-gradient-to-br from-blue-50 to-white border border-blue-500/30 rounded-xl p-8"
             >
               <div className="text-4xl mb-4">✨</div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Innovation</h3>

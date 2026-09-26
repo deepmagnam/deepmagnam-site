@@ -56,7 +56,7 @@ export function About() {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -74,7 +74,7 @@ export function About() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               About DEEPMAGNAM INTEGRATED SOLUTIONS
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto uppercase tracking-wider font-medium">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto uppercase tracking-wider font-medium">
               IT Services & Mechanical Designs Engineering
             </p>
           </motion.div>
@@ -131,7 +131,7 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-emerald-900/30 to-slate-900 border border-emerald-500/30 rounded-2xl p-8"
+              className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-500/30 rounded-2xl p-8"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-emerald-500/20 rounded-lg">
@@ -151,11 +151,11 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-cyan-900/30 to-slate-900 border border-cyan-500/30 rounded-2xl p-8"
+              className="bg-gradient-to-br from-cyan-50 to-white border border-cyan-500/30 rounded-2xl p-8"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-cyan-500/20 rounded-lg">
-                  <Target className="text-cyan-400" size={32} />
+                  <Target className="text-cyan-600" size={32} />
                 </div>
                 <h2 className="text-3xl font-bold text-slate-900">Our Mission</h2>
               </div>

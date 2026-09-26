@@ -38,7 +38,7 @@ export function Home() {
   ];
 
   return (
-    <div className="pt-20 bg-white">
+    <div className="pt-[var(--nav-height)] bg-white">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
         

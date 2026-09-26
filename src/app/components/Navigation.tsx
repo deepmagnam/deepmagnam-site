@@ -24,21 +24,21 @@ export function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-sm border-b border-slate-200">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-[100rem] mx-auto">
-        <div className="flex flex-wrap items-center justify-between min-h-[5rem] py-2 lg:py-0">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-[var(--nav-height)] transition-all duration-300 bg-white shadow-sm border-b border-slate-200">
+      <div className="h-full w-full px-4 sm:px-6 lg:px-8 max-w-[100rem] mx-auto">
+        <div className="flex h-full items-center justify-between gap-4">
           {/* Logo and Name */}
-          <Link to="/" className="flex items-center space-x-3 shrink-0">
+          <Link to="/" className="flex h-full min-w-0 items-center">
             <motion.div
-              className="flex items-center"
+              className="flex h-full min-w-0 items-center"
               whileHover={{ scale: 1.02 }}
             >
               <img 
                 src={logoImage} 
                 alt="DEEPMAGNAM INTEGRATED SOLUTIONS Logo" 
-                className="h-20 md:h-28 lg:h-32 w-auto object-contain py-2"
+                className="h-full w-auto shrink-0 object-contain py-1.5 md:py-2"
               />
-              <span className="ml-2 text-sm md:text-base font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent max-w-[180px] sm:max-w-none leading-tight">
+              <span className="ml-2 text-sm md:text-base font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent max-w-[180px] sm:max-w-none leading-tight line-clamp-3">
                 DEEPMAGNAM INTEGRATED SOLUTIONS
               </span>
             </motion.div>
@@ -64,7 +64,7 @@ export function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center shrink-0">
+          <div className="hidden lg:flex items-center shrink-0 ml-auto xl:ml-0">
             <Link
               to="/contact"
               className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300"
@@ -76,7 +76,10 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="xl:hidden text-slate-600 hover:text-emerald-600 transition-colors ml-auto lg:ml-4"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            className="xl:hidden shrink-0 text-slate-600 hover:text-emerald-600 transition-colors"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -87,10 +90,11 @@ export function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-white border-t border-slate-200 shadow-lg"
+            className="xl:hidden absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-height))] overflow-y-auto bg-white border-t border-slate-200 shadow-lg"
           >
             <div className="px-4 py-6 space-y-3">
               {navLinks.map((link) => (

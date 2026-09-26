@@ -4,9 +4,9 @@ import { ChevronRight } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Services() {
-  usePageMeta("Engineering & Web Services", "Outsourced CAD, reverse engineering and machine design, plus custom web apps, e-commerce and cloud deployment. One team for engineering and software projects.");
+  usePageMeta("Engineering & Software Services", "Outsourced CAD, FEA (ANSYS) and machine design, plus custom web and mobile apps, e-commerce and graphic design. One team for engineering and software.");
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -24,7 +24,7 @@ export function Services() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Our Services
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               DEEPMAGNAM INTEGRATED SOLUTIONS provides professional-grade engineering and digital solutions, bridgeing the gap between physical design and digital excellence.
             </p>
           </motion.div>
@@ -64,7 +64,7 @@ export function Services() {
                   <div className="p-3 bg-emerald-500/10 rounded-lg w-fit mb-4 group-hover:bg-emerald-500/20 transition-colors">
                     <Icon className="w-6 h-6 text-emerald-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-100 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-emerald-600 transition-colors">
                     {service.category}
                   </h3>
                   <ul className="space-y-2 flex-grow">
@@ -113,9 +113,9 @@ export function Services() {
                   className="bg-white/40 backdrop-blur-sm border border-slate-200/50 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 group flex flex-col h-full"
                 >
                   <div className="p-3 bg-cyan-500/10 rounded-lg w-fit mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                    <Icon className="w-6 h-6 text-cyan-400" />
+                    <Icon className="w-6 h-6 text-cyan-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-100 group-hover:text-cyan-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-cyan-700 transition-colors">
                     {service.category}
                   </h3>
                   <ul className="space-y-2 flex-grow">

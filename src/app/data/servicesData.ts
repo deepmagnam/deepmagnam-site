@@ -19,7 +19,10 @@ import {
   Boxes,
   Maximize,
   Gauge,
-  ShoppingCart
+  ShoppingCart,
+  Activity,
+  TabletSmartphone,
+  PenTool
 } from "lucide-react";
 
 export const mechanicalServices = [
@@ -98,7 +101,18 @@ export const mechanicalServices = [
     ]
   },
   {
-    category: "Specialized Services (High Value)",
+    category: "FEA & Analysis (ANSYS)",
+    icon: Activity,
+    items: [
+      "Static Structural Analysis (Stress & Deformation)",
+      "Modal & Vibration Analysis",
+      "Thermal Analysis (Steady-State & Transient)",
+      "Fatigue & Life Prediction",
+      "Simulation-Driven Design Optimization"
+    ]
+  },
+  {
+    category: "Specialized Engineering Solutions",
     icon: Cpu,
     items: [
       "E-Vehicle Component Design",
@@ -122,6 +136,17 @@ export const itServices = [
     ]
   },
   {
+    category: "Mobile App Development (Flutter / React Native)",
+    icon: TabletSmartphone,
+    items: [
+      "Cross-Platform App Development (Flutter / React Native)",
+      "Android & iOS App Development",
+      "Backend & API Integration for Mobile Apps",
+      "Push Notifications & In-App Payments",
+      "App Store & Play Store Deployment"
+    ]
+  },
+  {
     category: "E-Commerce Solutions",
     icon: ShoppingCart,
     items: [
@@ -141,6 +166,17 @@ export const itServices = [
       "Responsive Design (Mobile / Tablet / Desktop)",
       "Wireframing & Prototyping",
       "Website Redesign & Revamp"
+    ]
+  },
+  {
+    category: "Graphic Design",
+    icon: PenTool,
+    items: [
+      "Logo & Brand Identity Design",
+      "Marketing Collateral (Brochures, Flyers, Posters)",
+      "Social Media Creatives",
+      "Product Catalogues & Technical Illustrations",
+      "Presentation & Pitch Deck Design"
     ]
   },
   {
@@ -210,7 +246,7 @@ export const itServices = [
     ]
   },
   {
-    category: "Specialized High-Value Services",
+    category: "Specialized Software Solutions",
     icon: Layers,
     items: [
       "Startup MVP Development",

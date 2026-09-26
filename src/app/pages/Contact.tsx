@@ -59,7 +59,7 @@ export function Contact() {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -77,7 +77,7 @@ export function Contact() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Get In Touch
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Ready to start your project? We'd love to hear from you.
             </p>
           </motion.div>
@@ -133,7 +133,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-gradient-to-br from-emerald-900/20 to-slate-900 border border-emerald-500/30 rounded-xl p-6"
+                className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-500/30 rounded-xl p-6"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <Clock className="text-emerald-600" size={24} />
@@ -155,7 +155,7 @@ export function Contact() {
               transition={{ duration: 0.8 }}
               className="bg-white border border-slate-200 rounded-2xl p-8"
             >
-              <h2 className="text-3xl font-bold text-white mb-6">Send us a Message</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">Send us a Message</h2>
               
               {isSubmitted ? (
                 <motion.div
@@ -308,7 +308,7 @@ export function Contact() {
             </a>
             <a
               href="mailto:info@deepmagnam.com"
-              className="inline-block border-2 border-white text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-300"
             >
               Email Us
             </a>

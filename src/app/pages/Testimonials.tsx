@@ -6,7 +6,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 export function Testimonials() {
   usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam.");
   return (
-    <div className="pt-20">
+    <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -24,7 +24,7 @@ export function Testimonials() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Client Testimonials
             </h1>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Don't just take our word for it - hear what our clients have to say
             </p>
           </motion.div>
@@ -202,7 +202,7 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-gradient-to-br from-emerald-900/20 to-slate-900 border border-emerald-500/30 rounded-xl p-8 text-center"
+                className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-500/30 rounded-xl p-8 text-center"
               >
                 <div className="text-5xl mb-4">{story.icon}</div>
                 <div className="text-5xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent mb-4">
