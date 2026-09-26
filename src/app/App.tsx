@@ -1,6 +1,8 @@
-import { RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import { MotionConfig } from "motion/react";
-import { router } from "./routes";
+import { routes } from "./routes";
+
+const router = createBrowserRouter(routes);
 
 export default function App() {
   return (

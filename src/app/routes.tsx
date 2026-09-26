@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import type { RouteObject } from "react-router";
 import { RootLayout } from "./components/RootLayout";
 import { PageLoadingFallback } from "./components/PageLoadingFallback";
 import { Home } from "./pages/Home";
@@ -6,7 +6,8 @@ import { Home } from "./pages/Home";
 import { ErrorPage } from "./pages/ErrorPage";
 
 // Every page except Home is its own chunk, fetched on first visit to that route.
-export const router = createBrowserRouter([
+// Exported separately so tests can mount the same config in a memory router.
+export const routes: RouteObject[] = [
   {
     path: "/",
     Component: RootLayout,
@@ -25,4 +26,4 @@ export const router = createBrowserRouter([
       { path: "*", lazy: { Component: async () => (await import("./pages/NotFound")).NotFound } },
     ],
   },
-]);
+];
