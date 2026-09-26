@@ -99,6 +99,10 @@ export function Testimonials() {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 rounded-full object-cover border-2 border-emerald-500"
                   />
                   <div>

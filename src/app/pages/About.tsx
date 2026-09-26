@@ -115,7 +115,11 @@ export function About() {
               <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
                 alt="Team collaboration"
-                className="rounded-2xl shadow-2xl"
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={600}
+                className="w-full aspect-[4/3] object-cover rounded-2xl shadow-2xl"
               />
             </motion.div>
           </div>
@@ -257,6 +261,10 @@ export function About() {
                   <img
                     src={member.image}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={400}
+                    height={400}
                     className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />

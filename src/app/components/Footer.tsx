@@ -22,7 +22,11 @@ export function Footer() {
             <div className="flex items-center space-x-3 mb-6">
               <img 
                 src={logoImage} 
-                alt="Deepmagnam Integrated Solutions logo" 
+                alt="Deepmagnam Integrated Solutions logo"
+                loading="lazy"
+                decoding="async"
+                width={256}
+                height={256}
                 className="h-20 md:h-24 w-auto object-contain"
               />
               <h3 className="uppercase text-base md:text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">

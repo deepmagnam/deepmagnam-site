@@ -170,6 +170,10 @@ export function Portfolio() {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -242,6 +246,10 @@ export function Portfolio() {
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={450}
                     className="w-full h-full object-cover"
                   />
                 </div>

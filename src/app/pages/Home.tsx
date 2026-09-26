@@ -1,25 +1,68 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, CheckCircle, Users, Lightbulb, Zap, Award } from "lucide-react";
 import { projects } from "../data/mockData";
-import heroBg1 from "../../imports/b70735dbc9468a93786377ae0216ef57__1_.jpg";
-import heroBg2 from "../../imports/05d136c9dc2d333424b5956b8db8faba.jpg";
-import heroBg3 from "../../imports/Can_Consultants_Streamline_Organisational_Changes_.jpg";
+import hero1Sm from "../../imports/hero-1-960.webp";
+import hero1Lg from "../../imports/hero-1-1199.webp";
+import hero2Sm from "../../imports/hero-2-960.webp";
+import hero2Lg from "../../imports/hero-2-1199.webp";
+import hero3 from "../../imports/hero-3-735.webp";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { SITE_DESCRIPTION } from "../../config/site";
+
+// Widths are each source's real pixel width; nothing is upscaled. The first
+// slide's srcset must match the preload injected by vite.config.ts.
+const heroImages = [
+  { src: hero1Lg, srcSet: `${hero1Sm} 960w, ${hero1Lg} 1199w` },
+  { src: hero2Lg, srcSet: `${hero2Sm} 960w, ${hero2Lg} 1199w` },
+  { src: hero3, srcSet: `${hero3} 735w` },
+];
+const HERO_SIZES = "100vw";
 
 export function Home() {
   usePageMeta(null, SITE_DESCRIPTION);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [heroBg1, heroBg2, heroBg3];
+  const [loaded, setLoaded] = useState(() => heroImages.map(() => false));
+  const firstHeroRef = useRef<HTMLImageElement>(null);
+  const firstLoaded = loaded[0];
 
+  const markLoaded = (index: number) =>
+    setLoaded((prev) => (prev[index] ? prev : prev.map((v, i) => v || i === index)));
+
+  // The first slide may already be complete (from the preload/cache) before
+  // React attaches onLoad.
   useEffect(() => {
+    if (firstHeroRef.current?.complete && firstHeroRef.current.naturalWidth > 0) markLoaded(0);
+  }, []);
+
+  // Only once the first slide has displayed: fetch the others in the
+  // background, then start rotating. Each tick moves to the next slide only if
+  // its image is ready, so a slow connection never fades to an empty frame.
+  useEffect(() => {
+    if (!firstLoaded) return;
+    heroImages.slice(1).forEach((img, i) => {
+      const pre = new Image();
+      pre.decoding = "async";
+      pre.sizes = HERO_SIZES;
+      pre.srcset = img.srcSet;
+      pre.src = img.src;
+      pre.onload = () => markLoaded(i + 1);
+    });
+  }, [firstLoaded]);
+
+  const loadedRef = useRef(loaded);
+  loadedRef.current = loaded;
+  useEffect(() => {
+    if (!firstLoaded) return;
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+      setCurrentImageIndex((prev) => {
+        const next = (prev + 1) % heroImages.length;
+        return loadedRef.current[next] ? next : prev;
+      });
     }, 5000); // Change image every 5 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [firstLoaded]);
 
   const services = [
     { name: "Mechanical Engineering", icon: "⚙️", description: "From 2D-3D conversion to complex assembly design" },
@@ -43,21 +86,26 @@ export function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
         
         {/* Shuffle Background Images */}
-        <AnimatePresence>
+        {/* initial={false}: the first slide shows as soon as it loads, with no fade-in delay */}
+        <AnimatePresence initial={false}>
           {heroImages.map((img, index) => (
             currentImageIndex === index && (
-              <motion.div
+              <motion.img
                 key={index}
-                className="absolute inset-0 w-full h-full"
+                ref={index === 0 ? firstHeroRef : undefined}
+                src={img.src}
+                srcSet={img.srcSet}
+                sizes={HERO_SIZES}
+                alt=""
+                aria-hidden="true"
+                // lowercase fetchpriority: React 18 has no fetchPriority prop
+                {...(index === 0 ? { fetchpriority: "high" } : { decoding: "async" as const })}
+                onLoad={() => markLoaded(index)}
+                className="absolute inset-0 w-full h-full object-cover object-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                style={{
-                  backgroundImage: `url(${img})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
               />
             )
           ))}
@@ -154,6 +202,10 @@ export function Home() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={450}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>

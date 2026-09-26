@@ -236,7 +236,11 @@ export function Process() {
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
                 alt="Team working"
-                className="rounded-2xl shadow-2xl"
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={600}
+                className="w-full aspect-[4/3] object-cover rounded-2xl shadow-2xl"
               />
             </motion.div>
           </div>

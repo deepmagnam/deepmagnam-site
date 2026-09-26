@@ -35,7 +35,10 @@ export function Navigation() {
             >
               <img 
                 src={logoImage} 
-                alt="Deepmagnam Integrated Solutions logo" 
+                alt="Deepmagnam Integrated Solutions logo"
+                decoding="async"
+                width={256}
+                height={256}
                 className="h-full w-auto shrink-0 object-contain py-2"
               />
               <span data-nav-name className="ml-1.5 sm:ml-2 whitespace-nowrap uppercase max-[359px]:text-[10px] text-[11px] tracking-tight sm:text-sm sm:tracking-normal md:text-base font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
