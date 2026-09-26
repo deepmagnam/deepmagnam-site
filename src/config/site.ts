@@ -8,3 +8,21 @@ export const SITE_TITLE = "Deepmagnam Integrated Solutions | CAD & Software Deve
 
 export const SITE_DESCRIPTION =
   "Mechanical CAD, FEA (ANSYS), reverse engineering, product development and machine design, plus websites, e-commerce, mobile apps and graphic design.";
+
+// TODO: Placeholder contact details. Replace with the real ones; the Contact
+// page and footer both read from here.
+export const CONTACT = {
+  email: "info@deepmagnam.com",
+  phoneDisplay: "+1 (555) 123-4567",
+  /** Digits only, with country code. Used for tel: and WhatsApp links. */
+  phoneDigits: "15551234567",
+  address: "123 Tech Street, Innovation City, IC 12345",
+};
+
+// TODO: Placeholder social profiles ("#" until the real URLs exist).
+export const SOCIAL = {
+  linkedin: "#",
+  x: "#",
+  github: "#",
+  facebook: "#",
+};

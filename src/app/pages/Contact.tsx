@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { CONTACT } from "../../config/site";
 
 export function Contact() {
   usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam Integrated Solutions. We'd love to hear from you and will get back to you as soon as possible.");
@@ -35,25 +36,25 @@ export function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "info@deepmagnam.com",
-      link: "mailto:info@deepmagnam.com"
+      value: CONTACT.email,
+      link: `mailto:${CONTACT.email}`
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: CONTACT.phoneDisplay,
+      link: `tel:+${CONTACT.phoneDigits}`
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      value: "+1 (555) 123-4567",
-      link: "https://wa.me/15551234567"
+      value: CONTACT.phoneDisplay,
+      link: `https://wa.me/${CONTACT.phoneDigits}`
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "123 Tech Street, Innovation City, IC 12345",
+      value: CONTACT.address,
       link: "#"
     }
   ];
@@ -284,7 +285,7 @@ export function Contact() {
             <div className="text-center">
               <MapPin className="text-emerald-600 mx-auto mb-4" size={48} />
               <h3 className="text-2xl font-semibold text-slate-900 mb-2">Visit Our Office</h3>
-              <p className="text-slate-600">123 Tech Street, Innovation City, IC 12345</p>
+              <p className="text-slate-600">{CONTACT.address}</p>
             </div>
           </motion.div>
         </div>
@@ -301,13 +302,13 @@ export function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+15551234567"
+              href={`tel:+${CONTACT.phoneDigits}`}
               className="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300"
             >
               Call Us Now
             </a>
             <a
-              href="mailto:info@deepmagnam.com"
+              href={`mailto:${CONTACT.email}`}
               className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-300"
             >
               Email Us

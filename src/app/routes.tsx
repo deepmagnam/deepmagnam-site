@@ -1,31 +1,28 @@
 import { createBrowserRouter } from "react-router";
 import { RootLayout } from "./components/RootLayout";
+import { PageLoadingFallback } from "./components/PageLoadingFallback";
 import { Home } from "./pages/Home";
-import { About } from "./pages/About";
-import { Services } from "./pages/Services";
-import { Portfolio } from "./pages/Portfolio";
-import { Technologies } from "./pages/Technologies";
-import { Process } from "./pages/Process";
-import { Testimonials } from "./pages/Testimonials";
-import { Contact } from "./pages/Contact";
-import { NotFound } from "./pages/NotFound";
+// Stays in the main bundle: it's what renders if a lazy page chunk fails to load.
 import { ErrorPage } from "./pages/ErrorPage";
 
+// Every page except Home is its own chunk, fetched on first visit to that route.
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
     ErrorBoundary: ErrorPage,
+    // Shown on a first load straight onto a lazy route, until its chunk arrives.
+    HydrateFallback: PageLoadingFallback,
     children: [
       { index: true, Component: Home },
-      { path: "about", Component: About },
-      { path: "services", Component: Services },
-      { path: "portfolio", Component: Portfolio },
-      { path: "technologies", Component: Technologies },
-      { path: "process", Component: Process },
-      { path: "testimonials", Component: Testimonials },
-      { path: "contact", Component: Contact },
-      { path: "*", Component: NotFound },
+      { path: "about", lazy: { Component: async () => (await import("./pages/About")).About } },
+      { path: "services", lazy: { Component: async () => (await import("./pages/Services")).Services } },
+      { path: "portfolio", lazy: { Component: async () => (await import("./pages/Portfolio")).Portfolio } },
+      { path: "technologies", lazy: { Component: async () => (await import("./pages/Technologies")).Technologies } },
+      { path: "process", lazy: { Component: async () => (await import("./pages/Process")).Process } },
+      { path: "testimonials", lazy: { Component: async () => (await import("./pages/Testimonials")).Testimonials } },
+      { path: "contact", lazy: { Component: async () => (await import("./pages/Contact")).Contact } },
+      { path: "*", lazy: { Component: async () => (await import("./pages/NotFound")).NotFound } },
     ],
   },
 ]);

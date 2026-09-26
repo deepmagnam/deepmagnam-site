@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Mail, Phone, MapPin, Linkedin, Github, Facebook } from "lucide-react";
 import logoImage from "../../imports/logo-mark.webp";
+import { CONTACT, SOCIAL } from "../../config/site";
 
 function XLogo({ size = 20 }: { size?: number }) {
   return (
@@ -37,16 +38,16 @@ export function Footer() {
               
             </p>
             <div className="flex space-x-4">
-              <a href="#" aria-label="LinkedIn" className="text-slate-500 hover:text-emerald-600 transition-colors">
+              <a href={SOCIAL.linkedin} aria-label="LinkedIn" className="text-slate-500 hover:text-emerald-600 transition-colors">
                 <Linkedin size={20} aria-hidden="true" />
               </a>
-              <a href="#" aria-label="X (formerly Twitter)" className="text-slate-500 hover:text-emerald-600 transition-colors">
+              <a href={SOCIAL.x} aria-label="X (formerly Twitter)" className="text-slate-500 hover:text-emerald-600 transition-colors">
                 <XLogo size={20} />
               </a>
-              <a href="#" aria-label="GitHub" className="text-slate-500 hover:text-emerald-600 transition-colors">
+              <a href={SOCIAL.github} aria-label="GitHub" className="text-slate-500 hover:text-emerald-600 transition-colors">
                 <Github size={20} aria-hidden="true" />
               </a>
-              <a href="#" aria-label="Facebook" className="text-slate-500 hover:text-emerald-600 transition-colors">
+              <a href={SOCIAL.facebook} aria-label="Facebook" className="text-slate-500 hover:text-emerald-600 transition-colors">
                 <Facebook size={20} aria-hidden="true" />
               </a>
             </div>
@@ -98,15 +99,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3 text-slate-600 font-medium">
                 <Mail size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
-                <span>info@deepmagnam.com</span>
+                <span>{CONTACT.email}</span>
               </li>
               <li className="flex items-start space-x-3 text-slate-600 font-medium">
                 <Phone size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
-                <span>+1 (555) 123-4567</span>
+                <span>{CONTACT.phoneDisplay}</span>
               </li>
               <li className="flex items-start space-x-3 text-slate-600 font-medium">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
-                <span>123 Tech Street, Innovation City, IC 12345</span>
+                <span>{CONTACT.address}</span>
               </li>
             </ul>
           </div>

@@ -14,6 +14,13 @@
     -->
     <link rel="canonical" href="https://www.deepmagnam.com/" />
 
+    <!--
+      Fetch Inter with the CSS instead of after it, so first paint is already
+      in Inter and text doesn't re-wrap (layout shift) when the font swaps in.
+      Vite resolves this to the same hashed file the @font-face rule uses.
+    -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2" />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

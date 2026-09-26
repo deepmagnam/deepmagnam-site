@@ -4,19 +4,6 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-
-function figmaAssetResolver() {
-  return {
-    name: 'figma-asset-resolver',
-    resolveId(id) {
-      if (id.startsWith('figma:asset/')) {
-        const filename = id.replace('figma:asset/', '')
-        return path.resolve(__dirname, 'src/assets', filename)
-      }
-    },
-  }
-}
-
 // Preloads the first Home hero slide from the HTML, so it downloads in parallel
 // with the JS bundle instead of after React renders. The <link> is added by an
 // inline script only on "/", so other routes don't fetch an image they never
@@ -63,10 +50,7 @@ function homeHeroPreload(): Plugin {
 
 export default defineConfig({
   plugins: [
-    figmaAssetResolver(),
     homeHeroPreload(),
-    // The React and Tailwind plugins are both required for Make, even if
-    // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
   ],
