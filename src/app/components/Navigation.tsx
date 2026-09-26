@@ -70,7 +70,7 @@ export function Navigation() {
           <div data-nav-cta className="hidden lg:flex items-center shrink-0 ml-auto nav:ml-0">
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300"
+              className="bg-gradient-to-r from-emerald-700 to-cyan-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-emerald-800 hover:to-cyan-800 hover:shadow-lg transition-all duration-300"
             >
               Get Started
             </Link>
@@ -115,7 +115,7 @@ export function Navigation() {
               ))}
               <Link
                 to="/contact"
-                className="block text-center bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold mt-4 lg:hidden"
+                className="block text-center bg-gradient-to-r from-emerald-700 to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold mt-4 lg:hidden hover:from-emerald-800 hover:to-cyan-800 transition-colors"
               >
                 Get Started
               </Link>
