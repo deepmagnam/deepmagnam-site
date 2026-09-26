@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Target, Eye, Award, Users, Briefcase, Cpu } from "lucide-react";
+import { Target, Eye, Award, Users, Briefcase } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function About() {

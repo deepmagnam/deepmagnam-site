@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, CheckCircle, Users, Lightbulb, Zap, Award } from "lucide-react";
+import { ArrowRight, Users, Lightbulb, Zap, Award } from "lucide-react";
 import { projects } from "../data/mockData";
 import hero1Sm from "../../imports/hero-1-960.webp";
 import hero1Lg from "../../imports/hero-1-1199.webp";
@@ -51,8 +51,11 @@ export function Home() {
     });
   }, [firstLoaded]);
 
+  // Mirrors `loaded` for the interval callback without restarting the timer.
   const loadedRef = useRef(loaded);
-  loadedRef.current = loaded;
+  useEffect(() => {
+    loadedRef.current = loaded;
+  }, [loaded]);
   useEffect(() => {
     if (!firstLoaded) return;
     const interval = setInterval(() => {

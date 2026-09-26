@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import logoImage from "../../imports/logo-mark.webp";
 
 export function Navigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
+  // The menu remembers which location it was opened on, so any navigation
+  // closes it in the same render (no effect, no extra render).
+  const [menuOpenedAt, setMenuOpenedAt] = useState<string | null>(null);
+  const isMobileMenuOpen = menuOpenedAt === location.key;
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -78,7 +77,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setMenuOpenedAt(isMobileMenuOpen ? null : location.key)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
