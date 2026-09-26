@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Mail, Phone, MapPin, Linkedin, Github, Facebook } from "lucide-react";
-import logoImage from "../../imports/edited-photo_-_2026-09-07T151854.793.png";
+import logoImage from "../../imports/logo-mark.webp";
 
 function XLogo({ size = 20 }: { size?: number }) {
   return (
@@ -23,7 +23,7 @@ export function Footer() {
               <img 
                 src={logoImage} 
                 alt="DEEPMAGNAM INTEGRATED SOLUTIONS Logo" 
-                className="h-40 md:h-48 w-auto object-contain"
+                className="h-20 md:h-24 w-auto object-contain"
               />
               <h3 className="text-base md:text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
                 DEEPMAGNAM INTEGRATED SOLUTIONS

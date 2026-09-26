@@ -26,3 +26,9 @@
     --nav-height: 80px;
   }
 }
+
+/* Full nav row (logo + one-line name + 8 links + CTA) needs ~1321px of bar
+   width in the widest system font, +64px padding, +15px scrollbar, + spare. */
+@theme {
+  --breakpoint-nav: 90rem;
+}
