@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Contact() {
-  usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam. We'd love to hear from you and will get back to you as soon as possible.");
+  usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam Integrated Solutions. We'd love to hear from you and will get back to you as soon as possible.");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -74,7 +74,7 @@ export function Contact() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Get In Touch
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">

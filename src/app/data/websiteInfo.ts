@@ -1,5 +1,5 @@
 /**
- * DEEPMAGNAM Portfolio Website
+ * Deepmagnam Integrated Solutions portfolio website
  * 
  * A production-ready portfolio website for a company offering:
  * - Mechanical Engineering Design Services
@@ -62,7 +62,7 @@
  */
 
 export const websiteConfig = {
-  name: "DEEPMAGNAM",
+  name: "Deepmagnam Integrated Solutions",
   tagline: "IT SERVICES & MECHANICAL DESIGNS ENGINEERING",
   description: "High-precision mechanical designs and modern IT solutions",
   email: "info@deepmagnam.com",

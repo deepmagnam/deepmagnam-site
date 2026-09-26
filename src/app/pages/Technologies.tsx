@@ -20,7 +20,7 @@ export function Technologies() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Technologies We Use
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ export function Technologies() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {technologies.mechanical.map((tech, index) => (
               <motion.div
                 key={index}
@@ -57,12 +57,12 @@ export function Technologies() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-white border border-slate-200 rounded-xl p-6 text-center hover:border-emerald-500/50 transition-all duration-300 group"
+                className="bg-white border border-slate-200 rounded-xl p-4 xl:p-6 text-center hover:border-emerald-500/50 transition-all duration-300 group"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                   {tech.icon}
                 </div>
-                <h3 className="text-slate-900 font-semibold group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-slate-900 font-semibold wrap-break-word group-hover:text-emerald-600 transition-colors">
                   {tech.name}
                 </h3>
               </motion.div>
@@ -89,7 +89,7 @@ export function Technologies() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {technologies.software.map((tech, index) => (
               <motion.div
                 key={index}
@@ -98,12 +98,12 @@ export function Technologies() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-white border border-slate-200 rounded-xl p-6 text-center hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
+                className="bg-white border border-slate-200 rounded-xl p-4 xl:p-6 text-center hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 group"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                   {tech.icon}
                 </div>
-                <h3 className="text-slate-900 font-semibold group-hover:text-cyan-700 transition-colors">
+                <h3 className="text-slate-900 font-semibold wrap-break-word group-hover:text-cyan-700 transition-colors">
                   {tech.name}
                 </h3>
               </motion.div>
@@ -130,7 +130,7 @@ export function Technologies() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
             {technologies.design.map((tech, index) => (
               <motion.div
                 key={index}
@@ -139,12 +139,12 @@ export function Technologies() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-white border border-slate-200 rounded-xl p-8 text-center hover:border-emerald-500/50 transition-all duration-300 group"
+                className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 xl:p-8 text-center hover:border-emerald-500/50 transition-all duration-300 group"
               >
                 <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
                   {tech.icon}
                 </div>
-                <h3 className="text-slate-900 font-semibold group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-slate-900 font-semibold wrap-break-word group-hover:text-emerald-600 transition-colors">
                   {tech.name}
                 </h3>
               </motion.div>

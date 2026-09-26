@@ -4,7 +4,7 @@ import { testimonials } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Testimonials() {
-  usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam.");
+  usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam Integrated Solutions.");
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
@@ -21,7 +21,7 @@ export function Testimonials() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Client Testimonials
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
@@ -222,7 +222,7 @@ export function Testimonials() {
             Join Our Happy Clients
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Experience the DEEPMAGNAM INTEGRATED SOLUTIONS difference. Let's create your success story together.
+            Experience the Deepmagnam Integrated Solutions difference. Let's create your success story together.
           </p>
           <a
             href="/contact"

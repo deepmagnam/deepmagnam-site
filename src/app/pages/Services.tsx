@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function Services() {
-  usePageMeta("Engineering & Software Services", "Outsourced CAD, FEA (ANSYS) and machine design, plus custom web and mobile apps, e-commerce and graphic design. One team for engineering and software.");
+  usePageMeta("CAD & Software Services", "Outsourced CAD, FEA (ANSYS) and machine design, plus custom web and mobile apps, e-commerce and graphic design. One team for engineering and software.");
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
@@ -21,11 +21,11 @@ export function Services() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
               Our Services
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              DEEPMAGNAM INTEGRATED SOLUTIONS provides professional-grade engineering and digital solutions, bridgeing the gap between physical design and digital excellence.
+              Deepmagnam Integrated Solutions provides professional-grade engineering and digital solutions, bridgeing the gap between physical design and digital excellence.
             </p>
           </motion.div>
         </div>
@@ -140,7 +140,7 @@ export function Services() {
             Ready to Bring Your Vision to Life?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Whether it's a mechanical part or a complex digital platform, DEEPMAGNAM INTEGRATED SOLUTIONS has the expertise to deliver.
+            Whether it's a mechanical part or a complex digital platform, Deepmagnam Integrated Solutions has the expertise to deliver.
           </p>
           <a
             href="/contact"

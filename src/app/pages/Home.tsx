@@ -198,7 +198,7 @@ export function Home() {
               Why Choose Us
             </h2>
             <p className="text-xl text-slate-600">
-              The advantages of partnering with DEEPMAGNAM INTEGRATED SOLUTIONS
+              The advantages of partnering with Deepmagnam Integrated Solutions
             </p>
           </div>
 

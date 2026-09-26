@@ -27,8 +27,11 @@
   }
 }
 
-/* Full nav row (logo + one-line name + 8 links + CTA) needs ~1321px of bar
-   width in the widest system font, +64px padding, +15px scrollbar, + spare. */
+/* Full nav row (logo + one-line name + 8 links + CTA) needs ~1251px of bar
+   width in Inter. At 1366px that leaves 36px spare even with a 15px scrollbar;
+   at 1280px it doesn't fit, even with a smaller name. */
 @theme {
-  --breakpoint-nav: 90rem;
+  --breakpoint-nav: 85.375rem; /* 1366px */
+  /* Inter is self-hosted via @fontsource-variable/inter (imported in main.tsx). */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

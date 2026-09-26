@@ -22,11 +22,11 @@ export function Footer() {
             <div className="flex items-center space-x-3 mb-6">
               <img 
                 src={logoImage} 
-                alt="DEEPMAGNAM INTEGRATED SOLUTIONS Logo" 
+                alt="Deepmagnam Integrated Solutions logo" 
                 className="h-20 md:h-24 w-auto object-contain"
               />
-              <h3 className="text-base md:text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                DEEPMAGNAM INTEGRATED SOLUTIONS
+              <h3 className="uppercase text-base md:text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+                Deepmagnam Integrated Solutions
               </h3>
             </div>
             <p className="text-slate-600 mb-4 text-sm font-medium tracking-wide">
@@ -109,7 +109,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-200 mt-12 pt-8 text-center text-slate-500 font-medium">
-          <p>&copy; {currentYear} DEEPMAGNAM INTEGRATED SOLUTIONS. All rights reserved.</p>
+          <p>&copy; {currentYear} Deepmagnam Integrated Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

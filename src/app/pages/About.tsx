@@ -71,8 +71,8 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-              About DEEPMAGNAM INTEGRATED SOLUTIONS
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+              About Deepmagnam Integrated Solutions
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto uppercase tracking-wider font-medium">
               IT Services & Mechanical Designs Engineering
@@ -95,13 +95,13 @@ export function About() {
                 Our Story
               </h2>
               <p className="text-slate-700 text-lg mb-6">
-                Founded in 2026, DeepMagnam emerged from a vision to bridge the gap between industrial precision and digital intelligence. Our multidisciplinary team, led by six specialized founders, brings together collective expertise in mechanical engineering, IT infrastructure, and cutting-edge software development.
+                Founded in 2026, Deepmagnam Integrated Solutions emerged from a vision to bridge the gap between industrial precision and digital intelligence. Our multidisciplinary team, led by six specialized founders, brings together collective expertise in mechanical engineering, IT infrastructure, and cutting-edge software development.
               </p>
               <p className="text-slate-700 text-lg mb-6">
                 We specialize in providing high-impact mechanical design solutions and agile digital technology services. By leveraging industry-leading engineering tools alongside modern software development practices, we empower businesses to transform complex concepts into streamlined mechanical designs and scalable digital products.
               </p>
               <p className="text-slate-700 text-lg">
-                From intricate engineering components to enterprise-grade web applications, we deliver robust solutions across diverse sectors, including manufacturing, technology, and service-based industries. At DeepMagnam, we are committed to building the infrastructure of the future, one integrated solution at a time.
+                From intricate engineering components to enterprise-grade web applications, we deliver robust solutions across diverse sectors, including manufacturing, technology, and service-based industries. At Deepmagnam Integrated Solutions, we are committed to building the infrastructure of the future, one integrated solution at a time.
               </p>
             </motion.div>
 
@@ -189,7 +189,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white border border-slate-200 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300"
+                className="bg-white border border-slate-200 rounded-xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{area.icon}</div>
                 <h3 className="text-2xl font-bold mb-4 text-slate-900">{area.title}</h3>
