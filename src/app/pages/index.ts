@@ -1,0 +1,8 @@
+export { Home } from './Home';
+export { About } from './About';
+export { Services } from './Services';
+export { Portfolio } from './Portfolio';
+export { Technologies } from './Technologies';
+export { Process } from './Process';
+export { Testimonials } from './Testimonials';
+export { Contact } from './Contact';
