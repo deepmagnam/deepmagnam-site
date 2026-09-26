@@ -6,3 +6,5 @@ export { Technologies } from './Technologies';
 export { Process } from './Process';
 export { Testimonials } from './Testimonials';
 export { Contact } from './Contact';
+export { NotFound } from './NotFound';
+export { ErrorPage } from './ErrorPage';

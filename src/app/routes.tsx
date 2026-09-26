@@ -8,11 +8,14 @@ import { Technologies } from "./pages/Technologies";
 import { Process } from "./pages/Process";
 import { Testimonials } from "./pages/Testimonials";
 import { Contact } from "./pages/Contact";
+import { NotFound } from "./pages/NotFound";
+import { ErrorPage } from "./pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    ErrorBoundary: ErrorPage,
     children: [
       { index: true, Component: Home },
       { path: "about", Component: About },
@@ -22,6 +25,7 @@ export const router = createBrowserRouter([
       { path: "process", Component: Process },
       { path: "testimonials", Component: Testimonials },
       { path: "contact", Component: Contact },
+      { path: "*", Component: NotFound },
     ],
   },
 ]);
