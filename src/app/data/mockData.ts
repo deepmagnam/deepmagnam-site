@@ -91,6 +91,45 @@ export const projects = [
   },
 ];
 
+export const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    company: "AutoTech Industries",
+    role: "Engineering Director",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    rating: 5,
+    text: "Outstanding mechanical design work! Their team delivered precise CAD models and helped us reduce production time by 30%. Highly professional and responsive.",
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    company: "Digital Commerce Inc",
+    role: "CTO",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    rating: 5,
+    text: "The web development team exceeded our expectations. They built a scalable e-commerce platform that handles thousands of transactions daily. Excellent work!",
+  },
+  {
+    id: 3,
+    name: "Emily Rodriguez",
+    company: "MedHealth Solutions",
+    role: "Product Manager",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    rating: 5,
+    text: "Our mobile app development was smooth and efficient. The team understood our healthcare requirements perfectly and delivered a HIPAA-compliant solution.",
+  },
+  {
+    id: 4,
+    name: "David Thompson",
+    company: "InnovateMFG",
+    role: "Operations Manager",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    rating: 5,
+    text: "Exceptional product design services. They transformed our concept into a manufacturable design with detailed engineering drawings. Will definitely work with them again.",
+  },
+];
+
 export const technologies = {
   mechanical: [
     { name: "SolidWorks", icon: "⚙️" },

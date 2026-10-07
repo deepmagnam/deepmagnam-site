@@ -10,6 +10,33 @@ export function About() {
     { value: "8+", label: "Years Experience", icon: Award },
   ];
 
+  const team = [
+    {
+      name: "John Anderson",
+      role: "Lead Mechanical Engineer",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+      bio: "15+ years in CAD design and product development",
+    },
+    {
+      name: "Sarah Martinez",
+      role: "Senior Software Architect",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+      bio: "Full-stack expert specializing in scalable web solutions",
+    },
+    {
+      name: "David Kim",
+      role: "UI/UX Design Director",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
+      bio: "Creating beautiful and intuitive user experiences",
+    },
+    {
+      name: "Emily Thompson",
+      role: "Product Design Lead",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+      bio: "Innovative product design with manufacturing expertise",
+    },
+  ];
+
   const expertise = [
     {
       title: "Mechanical Engineering",
@@ -202,6 +229,49 @@ export function About() {
                 </div>
                 <div className="text-5xl font-bold text-slate-900 mb-2">{stat.value}</div>
                 <div className="text-xl text-white/90">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+              Meet Our Team
+            </h2>
+            <p className="text-xl text-slate-600">
+              Talented professionals driving innovation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="relative overflow-hidden rounded-xl mb-4">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={400}
+                    height={400}
+                    className="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">{member.name}</h3>
+                <p className="text-emerald-600 mb-2">{member.role}</p>
+                <p className="text-slate-600 text-sm">{member.bio}</p>
               </motion.div>
             ))}
           </div>

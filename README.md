@@ -4,7 +4,7 @@ Marketing site for Deepmagnam Integrated Solutions, a Coimbatore-based firm offe
 
 It's a single-page app: React 18, React Router 7, Tailwind CSS 4, Motion for animation, Lucide icons, built with Vite and TypeScript. The Plus Jakarta Sans font is self-hosted from npm.
 
-Pages: Home, About, Services, Portfolio, Technologies, Process, Contact, plus a 404 page. Home ships in the main bundle; every other page is a separate chunk loaded on first visit.
+Pages: Home, About, Services, Portfolio, Technologies, Process, Testimonials, Contact, plus a 404 page. Home ships in the main bundle; every other page is a separate chunk loaded on first visit.
 
 ## Run locally
 
@@ -59,7 +59,7 @@ The address also appears in the JSON-LD block in `index.html` (`addressLocality`
 
 ### Placeholder content
 
-Portfolio projects and some photos are sample content (see `src/app/data/mockData.ts` and the page files in `src/app/pages/`). The Unsplash photos are hot-linked and meant to be replaced with real ones.
+Portfolio projects, team members, testimonials and some photos are sample content (see `src/app/data/mockData.ts` and the page files in `src/app/pages/`). The Unsplash photos are hot-linked and meant to be replaced with real ones.
 
 ## Project layout
 

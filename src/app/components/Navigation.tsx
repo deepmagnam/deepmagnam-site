@@ -55,6 +55,7 @@ export function Navigation() {
     { name: "Portfolio", path: "/portfolio" },
     { name: "Technologies", path: "/technologies" },
     { name: "Process", path: "/process" },
+    { name: "Testimonials", path: "/testimonials" },
     { name: "Contact", path: "/contact" },
   ];
 

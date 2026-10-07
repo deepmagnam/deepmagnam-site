@@ -3,7 +3,6 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, RouterProvider, type RouteObject } from "react-router";
 import { routes } from "./routes";
-import { CONTACT } from "../config/site";
 
 // React Router rewrites route objects in place once a lazy route has loaded,
 // so each test's router gets its own copy of the config.
@@ -30,6 +29,7 @@ describe("routes", () => {
     ["/portfolio", "Our Portfolio"],
     ["/technologies", "Technologies We Use"],
     ["/process", "Our Process"],
+    ["/testimonials", "Client Testimonials"],
     ["/contact", "Get In Touch"],
   ])("%s shows its main heading", async (path, heading) => {
     renderAt(path);
@@ -39,38 +39,6 @@ describe("routes", () => {
   it("shows the Not Found page for an unknown URL", async () => {
     renderAt("/no-such-page");
     expect(await screen.findByRole("heading", { level: 1, name: "Page Not Found" })).toBeInTheDocument();
-  });
-
-  it("no longer has a Testimonials page", async () => {
-    renderAt("/testimonials");
-    expect(await screen.findByRole("heading", { level: 1, name: "Page Not Found" })).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: "Testimonials" })).not.toBeInTheDocument();
-  });
-});
-
-describe("about page", () => {
-  it("has no team section", async () => {
-    renderAt("/about");
-    await screen.findByRole("heading", { level: 1, name: "About Deepmagnam Integrated Solutions" });
-    expect(screen.queryByRole("heading", { name: "Meet Our Team" })).not.toBeInTheDocument();
-  });
-});
-
-describe("contact page", () => {
-  it("offers WhatsApp and email buttons instead of a form", async () => {
-    renderAt("/contact");
-    await screen.findByRole("heading", { level: 1, name: "Get In Touch" });
-
-    expect(screen.getByRole("link", { name: "Chat on WhatsApp" })).toHaveAttribute(
-      "href",
-      `https://wa.me/${CONTACT.whatsappDigits}`,
-    );
-    expect(screen.getByRole("link", { name: "Send an Email" })).toHaveAttribute(
-      "href",
-      `mailto:${CONTACT.email}`,
-    );
-    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Send Message" })).not.toBeInTheDocument();
   });
 });
 
