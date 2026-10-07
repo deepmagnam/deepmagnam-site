@@ -108,7 +108,7 @@ export function Portfolio() {
       {/* Filter Section: always one row. Centred when it fits, swipeable when it
           doesn't, so the bar height stays constant at every width. Only sticks
           when the viewport is tall enough (not on landscape phones). */}
-      <section className="py-3 md:py-6 bg-slate-50 [@media(min-height:500px)]:sticky top-[var(--nav-height)] z-40 border-b border-slate-200">
+      <section className="py-3 md:py-6 bg-slate-50 [@media(min-height:500px)]:sticky top-[var(--nav-offset)] z-40 transition-[top] duration-300 motion-reduce:transition-none border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={filterScrollerRef}

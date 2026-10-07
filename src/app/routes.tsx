@@ -21,7 +21,6 @@ export const routes: RouteObject[] = [
       { path: "portfolio", lazy: { Component: async () => (await import("./pages/Portfolio")).Portfolio } },
       { path: "technologies", lazy: { Component: async () => (await import("./pages/Technologies")).Technologies } },
       { path: "process", lazy: { Component: async () => (await import("./pages/Process")).Process } },
-      { path: "testimonials", lazy: { Component: async () => (await import("./pages/Testimonials")).Testimonials } },
       { path: "contact", lazy: { Component: async () => (await import("./pages/Contact")).Contact } },
       { path: "*", lazy: { Component: async () => (await import("./pages/NotFound")).NotFound } },
     ],

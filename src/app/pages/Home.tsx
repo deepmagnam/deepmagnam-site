@@ -4,19 +4,21 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Users, Lightbulb, Zap, Award } from "lucide-react";
 import { projects } from "../data/mockData";
 import hero1Sm from "../../imports/hero-1-960.webp";
-import hero1Lg from "../../imports/hero-1-1199.webp";
+import hero1Lg from "../../imports/hero-1-1920.webp";
 import hero2Sm from "../../imports/hero-2-960.webp";
-import hero2Lg from "../../imports/hero-2-1199.webp";
-import hero3 from "../../imports/hero-3-735.webp";
+import hero2Lg from "../../imports/hero-2-1920.webp";
+import hero3Sm from "../../imports/hero-3-960.webp";
+import hero3Lg from "../../imports/hero-3-1920.webp";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { serviceIcons, type ServiceIconName } from "../data/serviceIcons";
 import { SITE_DESCRIPTION } from "../../config/site";
 
 // Widths are each source's real pixel width; nothing is upscaled. The first
 // slide's srcset must match the preload injected by vite.config.ts.
 const heroImages = [
-  { src: hero1Lg, srcSet: `${hero1Sm} 960w, ${hero1Lg} 1199w` },
-  { src: hero2Lg, srcSet: `${hero2Sm} 960w, ${hero2Lg} 1199w` },
-  { src: hero3, srcSet: `${hero3} 735w` },
+  { src: hero1Lg, srcSet: `${hero1Sm} 960w, ${hero1Lg} 1920w` },
+  { src: hero2Lg, srcSet: `${hero2Sm} 960w, ${hero2Lg} 1920w` },
+  { src: hero3Lg, srcSet: `${hero3Sm} 960w, ${hero3Lg} 1920w` },
 ];
 const HERO_SIZES = "100vw";
 
@@ -67,13 +69,13 @@ export function Home() {
     return () => clearInterval(interval);
   }, [firstLoaded]);
 
-  const services = [
-    { name: "Mechanical Engineering", icon: "⚙️", description: "From 2D-3D conversion to complex assembly design" },
-    { name: "Product Development", icon: "🚀", description: "Concept to prototype with DFM optimization" },
-    { name: "Web Development", icon: "💻", description: "Custom web apps and full-stack solutions" },
-    { name: "E-Commerce", icon: "🛒", description: "Scalable online marketplaces and payment systems" },
-    { name: "UI/UX Design", icon: "🎨", description: "Intuitive interfaces and optimized user experiences" },
-    { name: "Specialized IT", icon: "⚡", description: "AI integration, SaaS, and custom business platforms" },
+  const services: { name: string; icon: ServiceIconName; description: string }[] = [
+    { name: "Mechanical Engineering", icon: "mechanical", description: "From 2D-3D conversion to complex assembly design" },
+    { name: "Product Development", icon: "product", description: "Concept to prototype with DFM optimization" },
+    { name: "Web Development", icon: "web", description: "Custom web apps and full-stack solutions" },
+    { name: "E-Commerce", icon: "ecommerce", description: "Scalable online marketplaces and payment systems" },
+    { name: "UI/UX Design", icon: "uiux", description: "Intuitive interfaces and optimized user experiences" },
+    { name: "Specialized IT", icon: "it", description: "AI integration, SaaS, and custom business platforms" },
   ];
 
   const whyChooseUs = [
@@ -166,6 +168,18 @@ export function Home() {
         </div>
       </section>
 
+      {/* Slogan band */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-balance">
+            Engineering Ideas. Enabling Innovation.
+          </h2>
+          <p className="mt-4 text-lg md:text-xl text-slate-600 text-pretty">
+            From product design and reverse engineering to digital solutions, we transform ideas into practical, scalable solutions.
+          </p>
+        </div>
+      </section>
+
       {/* Services Preview */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -178,25 +192,43 @@ export function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10, transition: { duration: 0.2 } }}
-                className="bg-white shadow-sm border border-slate-200 rounded-2xl p-8 hover:border-emerald-500 hover:shadow-md transition-all duration-300 group"
-              >
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-semibold mb-3 text-slate-800 group-hover:text-emerald-600 transition-colors">
-                  {service.name}
-                </h3>
-                <p className="text-slate-600">{service.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => {
+              const Icon = serviceIcons[service.icon];
+              return (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link
+                    to="/services"
+                    className="group relative block h-full overflow-hidden rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-500/50 hover:bg-emerald-50/60 hover:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)] outline-none focus-visible:border-emerald-500/50 focus-visible:bg-emerald-50/60 focus-visible:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-5 right-6 text-6xl font-bold leading-none text-emerald-700/10 select-none"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-700 transition-colors duration-300 group-hover:bg-emerald-600 group-hover:text-white group-focus-visible:bg-emerald-600 group-focus-visible:text-white">
+                      <Icon
+                        aria-hidden="true"
+                        strokeWidth={1.75}
+                        className="h-6 w-6 transition-transform duration-300 group-hover:rotate-[9deg] group-focus-visible:rotate-[9deg] motion-reduce:transition-none motion-reduce:group-hover:rotate-0 motion-reduce:group-focus-visible:rotate-0"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-3 text-slate-800 transition-colors group-hover:text-emerald-700 group-focus-visible:text-emerald-700">
+                      {service.name}
+                    </h3>
+                    <p className="text-slate-600">{service.description}</p>
+                  </Link>
+                </motion.li>
+              );
+            })}
+          </ol>
 
           <div className="text-center mt-12">
             <Link

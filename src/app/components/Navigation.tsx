@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import logoImage from "../../imports/logo-mark.webp";
+import { BrandLockup } from "./BrandLockup";
 
 export function Navigation() {
   const location = useLocation();
@@ -11,6 +11,43 @@ export function Navigation() {
   const [menuOpenedAt, setMenuOpenedAt] = useState<string | null>(null);
   const isMobileMenuOpen = menuOpenedAt === location.key;
 
+  // Hide on scroll down, show on scroll up. Always shown near the top of the
+  // page, while the mobile menu is open, and when something in it gets focus.
+  const navRef = useRef<HTMLElement>(null);
+  const [hiddenOnScroll, setHiddenOnScroll] = useState(false);
+  const isHidden = hiddenOnScroll && !isMobileMenuOpen;
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      if (y <= (navRef.current?.offsetHeight ?? 0)) {
+        setHiddenOnScroll(false);
+        lastY = y;
+      } else if (Math.abs(y - lastY) >= 5) {
+        // Small threshold so trackpad jitter doesn't flicker the nav.
+        setHiddenOnScroll(y > lastY);
+        lastY = y;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // Lets sticky bars (Portfolio filters) move up to top: 0 via --nav-offset.
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-nav-hidden", isHidden);
+    return () => document.documentElement.removeAttribute("data-nav-hidden");
+  }, [isHidden]);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -18,12 +55,17 @@ export function Navigation() {
     { name: "Portfolio", path: "/portfolio" },
     { name: "Technologies", path: "/technologies" },
     { name: "Process", path: "/process" },
-    { name: "Testimonials", path: "/testimonials" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-[var(--nav-height)] transition-all duration-300 bg-white shadow-sm border-b border-slate-200">
+    <nav
+      ref={navRef}
+      onFocus={() => setHiddenOnScroll(false)}
+      className={`fixed top-0 left-0 right-0 z-50 h-[var(--nav-height)] transition-transform duration-300 motion-reduce:transition-none bg-white border-b border-slate-200 ${
+        isHidden ? "-translate-y-full" : "shadow-sm"
+      }`}
+    >
       <div className="h-full w-full px-3 sm:px-6 lg:px-8 max-w-[100rem] mx-auto">
         <div className="flex h-full items-center justify-between gap-2 sm:gap-4">
           {/* Logo and Name */}
@@ -32,17 +74,12 @@ export function Navigation() {
               className="flex h-full items-center"
               whileHover={{ scale: 1.02 }}
             >
-              <img 
-                src={logoImage} 
-                alt="Deepmagnam Integrated Solutions logo"
-                decoding="async"
-                width={256}
-                height={256}
-                className="h-full w-auto shrink-0 object-contain py-2"
+              {/* Logo fills the bar minus 4px top and bottom: 56px on mobile,
+                  72px from md, so its "DEEP MAGNAM" lettering stays legible. */}
+              <BrandLockup
+                imgClassName="h-full py-1"
+                textClassName="ml-2 text-[10px] sm:text-xs md:text-sm"
               />
-              <span data-nav-name className="ml-1.5 sm:ml-2 whitespace-nowrap uppercase max-[359px]:text-[10px] text-[11px] tracking-tight sm:text-sm sm:tracking-normal md:text-base font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Deepmagnam Integrated Solutions
-              </span>
             </motion.div>
           </Link>
 
@@ -53,10 +90,10 @@ export function Navigation() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-2.5 py-2 rounded-lg transition-all duration-200 whitespace-nowrap ${
+                  className={`px-2.5 py-2 text-sm whitespace-nowrap underline-offset-8 transition-colors duration-200 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
                     location.pathname === link.path
-                      ? "bg-emerald-50/80 text-emerald-700 shadow-sm border border-emerald-100 font-semibold text-sm"
-                      : "text-slate-600 hover:text-emerald-700 hover:bg-slate-50 hover:shadow-sm border border-transparent hover:border-slate-200 font-medium text-sm"
+                      ? "text-emerald-700 font-semibold underline decoration-2 decoration-emerald-600"
+                      : "text-slate-600 font-medium hover:text-emerald-700 hover:underline hover:decoration-1 hover:decoration-emerald-600/40"
                   }`}
                 >
                   {link.name}
@@ -103,10 +140,10 @@ export function Navigation() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`block px-4 py-3 rounded-lg transition-all font-medium ${
+                  className={`block px-4 py-3 underline-offset-8 transition-colors outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
                     location.pathname === link.path
-                      ? "bg-emerald-50 text-emerald-700 shadow-sm border border-emerald-100"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-emerald-700"
+                      ? "text-emerald-700 font-semibold underline decoration-2 decoration-emerald-600"
+                      : "text-slate-600 font-medium hover:text-emerald-700 hover:underline hover:decoration-1 hover:decoration-emerald-600/40"
                   }`}
                 >
                   {link.name}

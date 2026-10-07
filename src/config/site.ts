@@ -14,8 +14,10 @@ export const SITE_DESCRIPTION =
 export const CONTACT = {
   email: "info@deepmagnam.com",
   phoneDisplay: "+1 (555) 123-4567",
-  /** Digits only, with country code. Used for tel: and WhatsApp links. */
+  /** Digits only, with country code. Used for tel: links. */
   phoneDigits: "15551234567",
+  /** Digits only, with country code. Used for wa.me links. */
+  whatsappDigits: "15551234567",
   address: "123 Tech Street, Innovation City, IC 12345",
 };
 

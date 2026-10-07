@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import { Mail, Phone, MapPin, Linkedin, Github, Facebook } from "lucide-react";
-import logoImage from "../../imports/logo-mark.webp";
 import { CONTACT, SOCIAL } from "../../config/site";
 
 function XLogo({ size = 20 }: { size?: number }) {
@@ -11,109 +10,104 @@ function XLogo({ size = 20 }: { size?: number }) {
   );
 }
 
+const linkClass =
+  "text-slate-600 hover:text-emerald-700 transition-colors rounded-sm outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600";
+const headingClass = "mb-4 text-xs font-semibold uppercase tracking-wider text-slate-500";
+const socialClass =
+  "flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-500 hover:border-emerald-500/50 hover:text-emerald-700 transition-colors outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src={logoImage} 
-                alt="Deepmagnam Integrated Solutions logo"
-                loading="lazy"
-                decoding="async"
-                width={256}
-                height={256}
-                className="h-20 md:h-24 w-auto object-contain"
-              />
-              <h3 className="uppercase text-base md:text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Deepmagnam Integrated Solutions
-              </h3>
-            </div>
-            <p className="text-slate-600 mb-4 text-sm font-medium tracking-wide">
-              
+    <footer className="bg-slate-50 border-t border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 py-12 lg:py-16">
+          {/* Brand: first in source order, so it leads when the columns stack. */}
+          <div className="sm:col-span-2 lg:col-span-4">
+            <p className="flex flex-wrap items-baseline gap-x-1.5 text-xl text-slate-900">
+              <span className="font-bold">Deepmagnam</span>
+              <span className="font-normal text-slate-600">Integrated Solutions</span>
             </p>
-            <div className="flex space-x-4">
-              <a href={SOCIAL.linkedin} aria-label="LinkedIn" className="text-slate-500 hover:text-emerald-600 transition-colors">
-                <Linkedin size={20} aria-hidden="true" />
+            <p className="mt-2 text-sm text-slate-500">Engineering Ideas. Enabling Innovation.</p>
+            {/* One-line name explanation goes here (mt-2 text-sm text-slate-500). */}
+            <div className="mt-8 flex gap-2">
+              <a href={SOCIAL.linkedin} aria-label="LinkedIn" className={socialClass}>
+                <Linkedin size={18} strokeWidth={1.75} aria-hidden="true" />
               </a>
-              <a href={SOCIAL.x} aria-label="X (formerly Twitter)" className="text-slate-500 hover:text-emerald-600 transition-colors">
-                <XLogo size={20} />
+              <a href={SOCIAL.x} aria-label="X (formerly Twitter)" className={socialClass}>
+                <XLogo size={16} />
               </a>
-              <a href={SOCIAL.github} aria-label="GitHub" className="text-slate-500 hover:text-emerald-600 transition-colors">
-                <Github size={20} aria-hidden="true" />
+              <a href={SOCIAL.github} aria-label="GitHub" className={socialClass}>
+                <Github size={18} strokeWidth={1.75} aria-hidden="true" />
               </a>
-              <a href={SOCIAL.facebook} aria-label="Facebook" className="text-slate-500 hover:text-emerald-600 transition-colors">
-                <Facebook size={20} aria-hidden="true" />
+              <a href={SOCIAL.facebook} aria-label="Facebook" className={socialClass}>
+                <Facebook size={18} strokeWidth={1.75} aria-hidden="true" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+          <div className="lg:col-span-2">
+            <h2 className={headingClass}>Quick Links</h2>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link to="/about" className="text-slate-600 hover:text-emerald-600 transition-colors font-medium">
+                <Link to="/about" className={linkClass}>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-slate-600 hover:text-emerald-600 transition-colors font-medium">
+                <Link to="/services" className={linkClass}>
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="text-slate-600 hover:text-emerald-600 transition-colors font-medium">
+                <Link to="/portfolio" className={linkClass}>
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-slate-600 hover:text-emerald-600 transition-colors font-medium">
+                <Link to="/contact" className={linkClass}>
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li className="text-slate-600 font-medium">Mechanical Design</li>
-              <li className="text-slate-600 font-medium">Product Development</li>
-              <li className="text-slate-600 font-medium">Web Development</li>
-              <li className="text-slate-600 font-medium">E-Commerce Solutions</li>
-              <li className="text-slate-600 font-medium">UI/UX & Design</li>
-              <li className="text-slate-600 font-medium">Advanced CAD Services</li>
+          {/* Services (plain text: there are no per-service pages) */}
+          <div className="lg:col-span-3">
+            <h2 className={headingClass}>Services</h2>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li>Mechanical Design</li>
+              <li>Product Development</li>
+              <li>Web Development</li>
+              <li>E-Commerce Solutions</li>
+              <li>UI/UX & Design</li>
+              <li>Advanced CAD Services</li>
             </ul>
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3 text-slate-600 font-medium">
-                <Mail size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
-                <span>{CONTACT.email}</span>
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h2 className={headingClass}>Contact Us</h2>
+            <ul className="space-y-3 text-sm text-slate-600">
+              <li className="flex items-start gap-3">
+                <Mail size={16} strokeWidth={1.75} className="mt-0.5 shrink-0 text-emerald-600" aria-hidden="true" />
+                <span className="break-words">{CONTACT.email}</span>
               </li>
-              <li className="flex items-start space-x-3 text-slate-600 font-medium">
-                <Phone size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
+              <li className="flex items-start gap-3">
+                <Phone size={16} strokeWidth={1.75} className="mt-0.5 shrink-0 text-emerald-600" aria-hidden="true" />
                 <span>{CONTACT.phoneDisplay}</span>
               </li>
-              <li className="flex items-start space-x-3 text-slate-600 font-medium">
-                <MapPin size={18} className="mt-1 flex-shrink-0 text-emerald-600" />
+              <li className="flex items-start gap-3">
+                <MapPin size={16} strokeWidth={1.75} className="mt-0.5 shrink-0 text-emerald-600" aria-hidden="true" />
                 <span>{CONTACT.address}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-slate-200 mt-12 pt-8 text-center text-slate-500 font-medium">
+        <div className="border-t border-slate-200 py-6 text-center sm:text-left text-xs text-slate-500">
           <p>&copy; {currentYear} Deepmagnam Integrated Solutions. All rights reserved.</p>
         </div>
       </div>

@@ -1,37 +1,10 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { CONTACT } from "../../config/site";
 
 export function Contact() {
   usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam Integrated Solutions. We'd love to hear from you and will get back to you as soon as possible.");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: ""
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-    }, 3000);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   const contactInfo = [
     {
       icon: Mail,
@@ -48,8 +21,8 @@ export function Contact() {
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      value: CONTACT.phoneDisplay,
-      link: `https://wa.me/${CONTACT.phoneDigits}`
+      value: `+${CONTACT.whatsappDigits}`,
+      link: `https://wa.me/${CONTACT.whatsappDigits}`
     },
     {
       icon: MapPin,
@@ -148,125 +121,36 @@ export function Contact() {
               </motion.div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Message Us */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white border border-slate-200 rounded-2xl p-8"
+              className="bg-white border border-slate-200 rounded-2xl p-8 self-start"
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Send us a Message</h2>
-              
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Message Us Directly</h2>
+              <p className="text-slate-600 text-lg mb-8">
+                Tell us about your project on WhatsApp or by email and we'll get back to you as soon as possible.
+              </p>
+              <div className="space-y-4">
+                <a
+                  href={`https://wa.me/${CONTACT.whatsappDigits}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-emerald-800 hover:to-cyan-800 transition-colors duration-300 flex items-center justify-center gap-2"
                 >
-                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Send className="text-slate-900" size={40} />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-slate-900 mb-2">Message Sent!</h3>
-                  <p className="text-slate-600">We'll get back to you as soon as possible.</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-slate-700 mb-2 font-medium">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-slate-700 mb-2 font-medium">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-slate-700 mb-2 font-medium">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="service" className="block text-slate-700 mb-2 font-medium">
-                      Service Required *
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="mechanical">Mechanical Design</option>
-                      <option value="web">Web Development</option>
-                      <option value="mobile">Mobile App Development</option>
-                      <option value="crm">CRM Development</option>
-                      <option value="uiux">UI/UX Design</option>
-                      <option value="graphic">Graphic Design</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-slate-700 mb-2 font-medium">
-                      Your Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
-                      placeholder="Tell us about your project..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    Send Message
-                    <Send size={20} />
-                  </button>
-                </form>
-              )}
+                  <MessageCircle size={20} />
+                  Chat on WhatsApp
+                </a>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="w-full border-2 border-emerald-700 text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition-colors duration-300 flex items-center justify-center gap-2"
+                >
+                  <Mail size={20} />
+                  Send an Email
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
