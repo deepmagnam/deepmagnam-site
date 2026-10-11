@@ -1,6 +1,5 @@
-// TODO: No domain registered yet. Update SITE_URL once it is live, and replace the same
-// placeholder URL in index.html, public/robots.txt and public/sitemap.xml.
-export const SITE_URL = "https://www.deepmagnam.com";
+// Also hard-coded in index.html, public/robots.txt and public/sitemap.xml; keep them in sync.
+export const SITE_URL = "https://www.deepmagnam.in";
 
 export const SITE_NAME = "Deepmagnam Integrated Solutions";
 
@@ -9,20 +8,38 @@ export const SITE_TITLE = "Deepmagnam Integrated Solutions | CAD & Software Deve
 export const SITE_DESCRIPTION =
   "Mechanical CAD, FEA (ANSYS), reverse engineering, product development and machine design, plus websites, e-commerce, mobile apps and graphic design.";
 
-// TODO: Placeholder contact details. Replace with the real ones; the Contact
-// page and footer both read from here.
+// The Contact page and footer both read from here. The address, phones and
+// email are also in the JSON-LD block in index.html.
 export const CONTACT = {
-  email: "info@deepmagnam.com",
-  phoneDisplay: "+1 (555) 123-4567",
-  /** Digits only, with country code. Used for tel: and WhatsApp links. */
-  phoneDigits: "15551234567",
-  address: "123 Tech Street, Innovation City, IC 12345",
+  email: "deepmagnam@gmail.com",
+  /**
+   * Both numbers are equal; list them in this order. Single CTAs use the first.
+   * `digits` is digits only, with country code, for tel: and WhatsApp links.
+   */
+  phones: [
+    { display: "+91 81369 04472", digits: "918136904472", whatsapp: true },
+    { display: "+91 75400 01501", digits: "917540001501", whatsapp: true },
+  ],
+  address: "Venkateswara Colony, Pollachi, Tamil Nadu 642001, India",
+  // Address search for now. Replace with the exact Google Maps pin share link
+  // when available.
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=Venkateswara+Colony%2C+Pollachi%2C+Tamil+Nadu+642001",
 };
 
-// TODO: Placeholder social profiles ("#" until the real URLs exist).
+export type ContactPhone = (typeof CONTACT.phones)[number];
+
+const WHATSAPP_MESSAGE =
+  "Hi Deepmagnam, I found you through your website and would like to discuss a project.";
+
+export const telHref = (phone: ContactPhone) => `tel:+${phone.digits}`;
+
+export const whatsAppHref = (phone: ContactPhone) =>
+  `https://wa.me/${phone.digits}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+// Also listed as sameAs in the JSON-LD block in index.html.
 export const SOCIAL = {
-  linkedin: "#",
-  x: "#",
-  github: "#",
-  facebook: "#",
+  instagram: "https://www.instagram.com/deepmagnam/",
+  linkedin: "https://www.linkedin.com/company/deepmagnam/",
+  youtube: "https://www.youtube.com/@deepmagnamintegratedsolutions",
 };

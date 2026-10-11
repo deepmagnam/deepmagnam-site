@@ -75,11 +75,11 @@ export function Navigation() {
               className="flex h-full items-center"
               whileHover={{ scale: 1.02 }}
             >
-              {/* Logo fills the bar minus 4px top and bottom: 56px on mobile,
-                  72px from md, so its "DEEP MAGNAM" lettering stays legible. */}
+              {/* Mark is 48px tall on mobile, 60px from md (8px/10px bar padding). */}
               <BrandLockup
-                imgClassName="h-full py-1"
-                textClassName="ml-2 text-[10px] sm:text-xs md:text-sm"
+                imgClassName="h-full py-2 md:py-2.5"
+                imgSizes="(min-width: 48rem) 63px, 50px"
+                textClassName="ml-2 text-lg md:ml-2.5 md:text-[22px]"
               />
             </motion.div>
           </Link>

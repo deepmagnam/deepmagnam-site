@@ -37,7 +37,7 @@ For any other host, set up the equivalent "fallback to index.html" rule.
 
 ### Domain (`SITE_URL`)
 
-The domain is a placeholder (`https://www.deepmagnam.com`). Change it in all of these:
+The domain is `https://www.deepmagnam.in`. If it changes, update all of these:
 
 - `src/config/site.ts`: `SITE_URL` (used for canonical URLs and share tags on each page)
 - `index.html`: canonical link, `og:url`, `og:image`, `twitter:image` and the JSON-LD block
@@ -48,10 +48,10 @@ The domain is a placeholder (`https://www.deepmagnam.com`). Change it in all of 
 
 All in `src/config/site.ts`:
 
-- `CONTACT`: email, phone (a display format, plus digits only for the `tel:` and WhatsApp links) and address. The Contact page and the footer both read from here.
-- `SOCIAL`: LinkedIn, X, GitHub and Facebook URLs (currently `#`).
+- `CONTACT`: email, `phones` (a list; each has a display format, digits only for the `tel:` and WhatsApp links, and a `whatsapp` flag) and address. The Contact page and the footer both read from here and list every number; single CTAs such as "Call Us Now" use the first one.
+- `SOCIAL`: Instagram, LinkedIn and YouTube URLs.
 
-The address also appears in the JSON-LD block in `index.html` (`addressLocality` and so on).
+The address, phones, email and social URLs also appear in the JSON-LD block in `index.html` (`address`, `contactPoint`, `email`, `sameAs`).
 
 ### Site name, title and description
 

@@ -53,7 +53,7 @@ export const projects = [
     id: 6,
     title: "Product Packaging Design",
     category: "Mechanical Design",
-    image: "https://images.unsplash.com/photo-1586864387634-bc4d4b12e2ea?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1607166452427-7e4477079cb9?w=800&q=80",
     description: "Sustainable packaging solution for consumer electronics",
     tools: ["SolidWorks", "KeyShot", "AutoCAD"],
     problem: "Consumer electronics company needed eco-friendly packaging",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
-import { CONTACT } from "../../config/site";
+import { CONTACT, telHref, whatsAppHref } from "../../config/site";
 
 export function Contact() {
   usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam Integrated Solutions. We'd love to hear from you and will get back to you as soon as possible.");
@@ -39,23 +39,17 @@ export function Contact() {
       value: CONTACT.email,
       link: `mailto:${CONTACT.email}`
     },
-    {
+    ...CONTACT.phones.map((phone) => ({
       icon: Phone,
       title: "Phone",
-      value: CONTACT.phoneDisplay,
-      link: `tel:+${CONTACT.phoneDigits}`
-    },
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      value: CONTACT.phoneDisplay,
-      link: `https://wa.me/${CONTACT.phoneDigits}`
-    },
+      value: phone.display,
+      phone
+    })),
     {
       icon: MapPin,
       title: "Location",
       value: CONTACT.address,
-      link: "#"
+      link: CONTACT.mapUrl
     }
   ];
 
@@ -104,28 +98,77 @@ export function Contact() {
               </p>
 
               <div className="space-y-6 mb-12">
-                {contactInfo.map((info, index) => (
-                  <motion.a
-                    key={index}
-                    href={info.link}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ x: 10 }}
-                    className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-emerald-500/50 transition-all duration-300 group"
-                  >
+                {contactInfo.map((info, index) => {
+                  const cardMotion = {
+                    initial: { opacity: 0, x: -20 },
+                    whileInView: { opacity: 1, x: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.5, delay: index * 0.1 }
+                  };
+                  const icon = (
                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center">
                       <info.icon className="text-white" size={24} />
                     </div>
-                    <div>
-                      <h3 className="text-slate-900 font-semibold mb-1 group-hover:text-emerald-600 transition-colors">
-                        {info.title}
-                      </h3>
-                      <p className="text-slate-600">{info.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
+                  );
+
+                  // A phone card holds two actions (Call, WhatsApp), so it
+                  // can't be a single link like the other cards.
+                  if ("phone" in info) {
+                    return (
+                      <motion.div
+                        key={index}
+                        {...cardMotion}
+                        className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-emerald-500/50 transition-all duration-300"
+                      >
+                        {icon}
+                        <div>
+                          <h3 className="text-slate-900 font-semibold mb-1">{info.title}</h3>
+                          <p className="text-slate-600">{info.value}</p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            <a
+                              href={telHref(info.phone)}
+                              aria-label={`Call ${info.phone.display}`}
+                              className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-emerald-500/50 hover:text-emerald-700 transition-colors"
+                            >
+                              <Phone size={16} aria-hidden="true" />
+                              Call
+                            </a>
+                            {info.phone.whatsapp && (
+                              <a
+                                href={whatsAppHref(info.phone)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`WhatsApp ${info.phone.display}`}
+                                className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-700 hover:border-emerald-500/50 hover:text-emerald-700 transition-colors"
+                              >
+                                <MessageCircle size={16} aria-hidden="true" />
+                                WhatsApp
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  }
+
+                  return (
+                    <motion.a
+                      key={index}
+                      href={info.link}
+                      {...cardMotion}
+                      whileHover={{ x: 10 }}
+                      className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-emerald-500/50 transition-all duration-300 group"
+                    >
+                      {icon}
+                      <div>
+                        <h3 className="text-slate-900 font-semibold mb-1 group-hover:text-emerald-600 transition-colors">
+                          {info.title}
+                        </h3>
+                        <p className="text-slate-600">{info.value}</p>
+                      </div>
+                    </motion.a>
+                  );
+                })}
               </div>
 
               {/* Office Hours */}
@@ -215,7 +258,7 @@ export function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
 
@@ -275,19 +318,26 @@ export function Contact() {
       {/* Map Section (Placeholder) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <motion.a
+            href={CONTACT.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open our office location in Google Maps (opens in a new tab)"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden h-96 flex items-center justify-center"
+            className="group bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden h-96 flex items-center justify-center hover:border-emerald-500/50 hover:bg-emerald-50/40 hover:shadow-md transition-all duration-300 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
           >
             <div className="text-center">
-              <MapPin className="text-emerald-600 mx-auto mb-4" size={48} />
+              <MapPin className="text-emerald-600 mx-auto mb-4 transition-transform duration-300 group-hover:-translate-y-1" size={48} />
               <h3 className="text-2xl font-semibold text-slate-900 mb-2">Visit Our Office</h3>
               <p className="text-slate-600">{CONTACT.address}</p>
+              <p className="mt-4 text-sm font-medium text-emerald-700 group-hover:underline">
+                Open in Google Maps →
+              </p>
             </div>
-          </motion.div>
+          </motion.a>
         </div>
       </section>
 
@@ -302,7 +352,7 @@ export function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`tel:+${CONTACT.phoneDigits}`}
+              href={telHref(CONTACT.phones[0])}
               className="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300"
             >
               Call Us Now

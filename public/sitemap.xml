@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- PLACEHOLDER DOMAIN: replace https://www.deepmagnam.com with the real domain (see SITE_URL in src/config/site.ts). -->
+<!-- Keep the domain in sync with SITE_URL in src/config/site.ts. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.deepmagnam.com/</loc></url>
-  <url><loc>https://www.deepmagnam.com/about</loc></url>
-  <url><loc>https://www.deepmagnam.com/services</loc></url>
-  <url><loc>https://www.deepmagnam.com/portfolio</loc></url>
-  <url><loc>https://www.deepmagnam.com/technologies</loc></url>
-  <url><loc>https://www.deepmagnam.com/process</loc></url>
-  <url><loc>https://www.deepmagnam.com/testimonials</loc></url>
-  <url><loc>https://www.deepmagnam.com/contact</loc></url>
+  <url><loc>https://www.deepmagnam.in/</loc></url>
+  <url><loc>https://www.deepmagnam.in/about</loc></url>
+  <url><loc>https://www.deepmagnam.in/services</loc></url>
+  <url><loc>https://www.deepmagnam.in/portfolio</loc></url>
+  <url><loc>https://www.deepmagnam.in/technologies</loc></url>
+  <url><loc>https://www.deepmagnam.in/process</loc></url>
+  <url><loc>https://www.deepmagnam.in/testimonials</loc></url>
+  <url><loc>https://www.deepmagnam.in/contact</loc></url>
 </urlset>

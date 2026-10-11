@@ -42,11 +42,15 @@
   --nav-offset: 0px;
 }
 
-/* Full nav row (logo + "Integrated Solutions" + 8 links + CTA) in Plus Jakarta
-   Sans needs ~1076px of bar width, so it fits from ~1155px viewport width
-   (with a 15px scrollbar); at 1366px the links have ~210px spare. */
+/* Full nav row (DM mark + two-line name + 8 links + CTA) in Plus Jakarta Sans
+   needs ~1111px of bar width, so it fits from ~1190px viewport width (with a
+   15px scrollbar); at 1366px the links have ~215px spare. */
 @theme {
   --breakpoint-nav: 85.375rem; /* 1366px */
+  /* Sampled from the logo lockup, whose name fades blue to grey: medians of
+     "DEEPMAGNAM" and of "INTEGRATED SOLUTIONS". */
+  --color-brand-blue: #325a77;
+  --color-brand-grey: #697e8b;
   /* Plus Jakarta Sans is self-hosted via @fontsource-variable/plus-jakarta-sans (imported in main.tsx). */
   --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
