@@ -13,12 +13,13 @@ export const SITE_DESCRIPTION =
 export const CONTACT = {
   email: "deepmagnam@gmail.com",
   /**
-   * Both numbers are equal; list them in this order. Single CTAs use the first.
+   * All numbers are equal; list them in this order. Single CTAs use the first.
    * `digits` is digits only, with country code, for tel: and WhatsApp links.
    */
   phones: [
     { display: "+91 81369 04472", digits: "918136904472", whatsapp: true },
     { display: "+91 75400 01501", digits: "917540001501", whatsapp: true },
+    { display: "+91 97894 39543", digits: "919789439543", whatsapp: true },
   ],
   address: "Venkateswara Colony, Pollachi, Tamil Nadu 642001, India",
   // Address search for now. Replace with the exact Google Maps pin share link
@@ -42,4 +43,5 @@ export const SOCIAL = {
   instagram: "https://www.instagram.com/deepmagnam/",
   linkedin: "https://www.linkedin.com/company/deepmagnam/",
   youtube: "https://www.youtube.com/@deepmagnamintegratedsolutions",
+  x: "https://x.com/DEEPMAGNAM",
 };

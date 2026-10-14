@@ -18,6 +18,14 @@ function YouTubeIcon({ size = 20 }: { size?: number }) {
   );
 }
 
+function XLogo({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 const linkClass =
   "text-slate-600 hover:text-emerald-700 transition-colors rounded-sm outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600";
 const headingClass = "mb-4 text-xs font-semibold uppercase tracking-wider text-slate-500";
@@ -48,6 +56,9 @@ export function Footer() {
               </a>
               <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube (opens in a new tab)" className={socialClass}>
                 <YouTubeIcon size={18} />
+              </a>
+              <a href={SOCIAL.x} target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)" className={socialClass}>
+                <XLogo size={16} />
               </a>
             </div>
           </div>
