@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { SITE_NAME, SITE_TITLE, SITE_URL } from "../../config/site";
+import { SITE_URL } from "../../config/site";
+import { pageTitle, type PageMeta } from "../../config/pageMeta";
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -24,14 +25,14 @@ function setCanonical(href: string) {
 
 /**
  * Sets the document title, meta description, canonical URL and matching
- * Open Graph / Twitter tags for the current page.
- * Pass `null` as the title on the home page to use the full site title.
+ * Open Graph / Twitter tags for the current page. Prerendered pages already
+ * ship these tags; this keeps them right during client-side navigation.
  */
-export function usePageMeta(title: string | null, description: string) {
+export function usePageMeta({ title, description }: PageMeta) {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_TITLE;
+    const fullTitle = pageTitle(title);
     const url = SITE_URL + pathname;
 
     document.title = fullTitle;

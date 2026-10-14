@@ -8,7 +8,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 // Not type-aware: recommendedTypeChecked roughly doubled lint time and found
 // nothing real in this codebase.
 export default tseslint.config(
-  { ignores: ["dist/", "node_modules/"] },
+  { ignores: ["dist/", "dist-ssr/", "node_modules/"] },
   {
     files: ["**/*.{ts,tsx}"],
     extends: [

@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { projects } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Portfolio() {
-  usePageMeta("Portfolio", "Explore our latest projects in mechanical design and digital solutions, from industrial equipment redesign to e-commerce platforms and web portals.");
+  usePageMeta(PAGE_META["/portfolio"]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 

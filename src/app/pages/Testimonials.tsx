@@ -2,9 +2,10 @@ import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
 import { testimonials } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Testimonials() {
-  usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam Integrated Solutions.");
+  usePageMeta(PAGE_META["/testimonials"]);
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}

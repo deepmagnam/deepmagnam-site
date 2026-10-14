@@ -3,16 +3,21 @@ import { motion } from "motion/react";
 import { Link, useLocation } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { NOT_FOUND_META } from "../../config/pageMeta";
 
 export function NotFound() {
-  usePageMeta("Page Not Found", "The page you're looking for may have been moved or never existed.");
+  usePageMeta(NOT_FOUND_META);
   const location = useLocation();
 
   useEffect(() => {
-    const robots = document.createElement("meta");
-    robots.name = "robots";
-    robots.content = "noindex";
-    document.head.appendChild(robots);
+    // The prerendered 404.html already has this tag; a client-side visit adds it.
+    let robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.name = "robots";
+      robots.content = "noindex";
+      document.head.appendChild(robots);
+    }
     return () => robots.remove();
   }, []);
 
@@ -38,7 +43,8 @@ export function NotFound() {
               Page Not Found
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10">
-              We couldn't find <span className="font-mono text-emerald-400 break-all">{location.pathname}</span>.
+              We couldn't find {/* 404.html is prerendered at a stand-in path; React swaps in the real one. */}
+              <span className="font-mono text-emerald-400 break-all" suppressHydrationWarning>{location.pathname}</span>.
               It may have been moved or never existed.
             </p>
             <Link

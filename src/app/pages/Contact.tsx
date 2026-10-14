@@ -2,10 +2,11 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 import { CONTACT, telHref, whatsAppHref } from "../../config/site";
 
 export function Contact() {
-  usePageMeta("Contact", "Ready to start your project? Get in touch with Deepmagnam Integrated Solutions. We'd love to hear from you and will get back to you as soon as possible.");
+  usePageMeta(PAGE_META["/contact"]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",

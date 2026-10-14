@@ -2,9 +2,10 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { processSteps } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Process() {
-  usePageMeta("Process", "Our proven workflow: requirement analysis, concept design, development and modeling, testing and optimization, and final delivery.");
+  usePageMeta(PAGE_META["/process"]);
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}

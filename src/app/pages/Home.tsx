@@ -11,7 +11,7 @@ import hero3Sm from "../../imports/hero-3-960.webp";
 import hero3Lg from "../../imports/hero-3-1920.webp";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { serviceIcons, type ServiceIconName } from "../data/serviceIcons";
-import { SITE_DESCRIPTION } from "../../config/site";
+import { PAGE_META } from "../../config/pageMeta";
 
 // Widths are each source's real pixel width; nothing is upscaled. The first
 // slide's srcset must match the preload injected by vite.config.ts.
@@ -23,7 +23,7 @@ const heroImages = [
 const HERO_SIZES = "100vw";
 
 export function Home() {
-  usePageMeta(null, SITE_DESCRIPTION);
+  usePageMeta(PAGE_META["/"]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loaded, setLoaded] = useState(() => heroImages.map(() => false));
   const firstHeroRef = useRef<HTMLImageElement>(null);

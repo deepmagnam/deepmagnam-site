@@ -141,7 +141,8 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-200 py-6 text-center sm:text-left text-xs text-slate-500">
-          <p>&copy; {currentYear} Deepmagnam Integrated Solutions. All rights reserved.</p>
+          {/* The prerendered year is the build year; React updates it if they differ. */}
+          <p suppressHydrationWarning>&copy; {currentYear} Deepmagnam Integrated Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import { Target, Eye, Award, Users, Briefcase } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function About() {
-  usePageMeta("About", "Deepmagnam Integrated Solutions: IT services and mechanical design engineering, bridging the gap between industrial precision and digital intelligence.");
+  usePageMeta(PAGE_META["/about"]);
   const stats = [
     { value: "200+", label: "Projects Completed", icon: Briefcase },
     { value: "150+", label: "Happy Clients", icon: Users },

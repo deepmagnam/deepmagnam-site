@@ -1,18 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { createMemoryRouter, RouterProvider, type RouteObject } from "react-router";
-import { routes } from "./routes";
-
-// React Router rewrites route objects in place once a lazy route has loaded,
-// so each test's router gets its own copy of the config.
-function cloneRoutes(list: RouteObject[]): RouteObject[] {
-  return list.map((route) => ({
-    ...route,
-    lazy: route.lazy && typeof route.lazy === "object" ? { ...route.lazy } : route.lazy,
-    children: route.children && cloneRoutes(route.children),
-  })) as RouteObject[];
-}
+import { createMemoryRouter, RouterProvider } from "react-router";
+import { cloneRoutes, routes } from "./routes";
 
 // Mounts the real route config (lazy pages included) at the given URL.
 function renderAt(path: string) {

@@ -2,7 +2,7 @@
 
 Marketing site for Deepmagnam Integrated Solutions, a Coimbatore-based firm offering mechanical CAD/engineering design (CAD, FEA, reverse engineering, product and machine design) and software services (web, e-commerce, mobile apps, graphic design).
 
-It's a single-page app: React 18, React Router 7, Tailwind CSS 4, Motion for animation, Lucide icons, built with Vite and TypeScript. The Plus Jakarta Sans font is self-hosted from npm.
+It's a React app, prerendered to static HTML at build time: React 18, React Router 7, Tailwind CSS 4, Motion for animation, Lucide icons, built with Vite and TypeScript. The Plus Jakarta Sans font is self-hosted from npm.
 
 Pages: Home, About, Services, Portfolio, Technologies, Process, Testimonials, Contact, plus a 404 page. Home ships in the main bundle; every other page is a separate chunk loaded on first visit.
 
@@ -18,20 +18,22 @@ npm run dev       # dev server with hot reload, http://localhost:5173
 ## Build
 
 ```bash
-npm run build     # type-checks (tsc), then builds to dist/
+npm run build     # type-checks (tsc), builds to dist/, then prerenders every page
 npm run preview   # serves dist/ locally, http://localhost:4173
 ```
 
-`dist/` is a fully static site; any static host works.
+`dist/` is a fully static site; any static host works. Each page is its own HTML file (`index.html`, `about.html`, …, plus `404.html`) with that page's content, title, description, canonical URL and share tags, so crawlers and link previews don't need to run JavaScript. In the browser, React then hydrates the page and it behaves as a normal single-page app.
+
+How the prerender works: `vite build --ssr` bundles `src/entry-server.tsx`, and `scripts/prerender.mjs` renders each page with it into the built `index.html`. The list of pages comes from `src/config/pageMeta.ts`; a new page needs an entry there (and in `public/sitemap.xml`).
 
 ## Deploy
 
-Because it's a single-page app, the host must serve `index.html` for every path (so `/about` works on a direct visit or refresh). Both configs are already in the repo:
+The host must serve `about.html` for `/about` (and so on), and `404.html` with a 404 status for any other path. Both configs are already in the repo:
 
-- **Vercel:** `vercel.json` (rewrite to `/index.html`). Import the repo; the defaults (build `npm run build`, output `dist`) are correct.
-- **Netlify:** `public/_redirects` (copied into `dist/`). Build command `npm run build`, publish directory `dist`.
+- **Vercel:** `vercel.json` (`cleanUrls`, `trailingSlash: false`; Vercel serves `404.html` for unknown paths on its own). Import the repo; the defaults (build `npm run build`, output `dist`) are correct.
+- **Netlify:** `public/_redirects` (copied into `dist/`; Netlify already serves `about.html` at `/about`). Build command `npm run build`, publish directory `dist`.
 
-For any other host, set up the equivalent "fallback to index.html" rule.
+For any other host, set up the equivalent "clean URLs" and "404.html for everything else" rules. Don't fall back to `index.html`: that's the prerendered home page.
 
 ## What to update before going live
 
@@ -55,7 +57,9 @@ The address, phones, email and social URLs also appear in the JSON-LD block in `
 
 ### Site name, title and description
 
-`src/config/site.ts`: `SITE_NAME`, `SITE_TITLE` and `SITE_DESCRIPTION`. The static copies in `index.html` (`<title>`, meta description, Open Graph and Twitter tags, JSON-LD) should match; they're what link previews and crawlers see before JavaScript runs.
+`src/config/site.ts`: `SITE_NAME`, `SITE_TITLE` and `SITE_DESCRIPTION`. The static copies in `index.html` (`<title>`, meta description, Open Graph and Twitter tags, JSON-LD) should match. The prerender fills in each page's own title, description, canonical URL and `og:url` from those tags, so they must stay in `index.html`.
+
+Each page's title and description are in `src/config/pageMeta.ts`.
 
 ### Placeholder content
 
@@ -67,6 +71,9 @@ Portfolio projects, team members, testimonials and some photos are sample conten
 index.html                 static meta tags, JSON-LD
 public/                    favicons, OG image, robots.txt, sitemap.xml, _redirects
 src/config/site.ts         site URL, name, title, description, contact details
+src/config/pageMeta.ts     each page's title and description; the pages to prerender
+src/entry-server.tsx       prerender: renders a page into the built index.html
+scripts/prerender.mjs      prerender: writes dist/<page>.html for every page
 src/app/routes.tsx         routes (lazy-loaded pages)
 src/app/components/        nav, footer, layout
 src/app/pages/             one file per page
