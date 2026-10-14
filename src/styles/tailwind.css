@@ -5,6 +5,13 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Gradient text is painted by the background, which stops at the padding
+     box. Plus Jakarta Sans descenders (g, p, y) hang below a line-height: 1
+     box, so give them room or they get cut off. */
+  .bg-clip-text {
+    padding-bottom: 0.12em;
+  }
 }
 
 @utility scrollbar-none {
@@ -25,11 +32,25 @@
   }
 }
 
-/* Full nav row (logo + one-line name + 8 links + CTA) needs ~1251px of bar
-   width in Inter. At 1366px that leaves 36px spare even with a 15px scrollbar;
-   at 1280px it doesn't fit, even with a smaller name. */
+/* Space the nav takes up at the top of the viewport right now: 0 while it is
+   hidden on scroll-down (Navigation sets data-nav-hidden on <html>). Sticky
+   bars use this instead of --nav-height so they move up into the gap. */
+:root {
+  --nav-offset: var(--nav-height);
+}
+:root[data-nav-hidden] {
+  --nav-offset: 0px;
+}
+
+/* Full nav row (DM mark + two-line name + 8 links + CTA) in Plus Jakarta Sans
+   needs ~1111px of bar width, so it fits from ~1190px viewport width (with a
+   15px scrollbar); at 1366px the links have ~215px spare. */
 @theme {
   --breakpoint-nav: 85.375rem; /* 1366px */
-  /* Inter is self-hosted via @fontsource-variable/inter (imported in main.tsx). */
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Sampled from the logo lockup, whose name fades blue to grey: medians of
+     "DEEPMAGNAM" and of "INTEGRATED SOLUTIONS". */
+  --color-brand-blue: #325a77;
+  --color-brand-grey: #697e8b;
+  /* Plus Jakarta Sans is self-hosted via @fontsource-variable/plus-jakarta-sans (imported in main.tsx). */
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

@@ -48,9 +48,39 @@ function homeHeroPreload(): Plugin {
   }
 }
 
+// `vite preview` only: serves pages the way Vercel does. /about gets
+// dist/about/index.html, and unknown page URLs get dist/404.html with a 404
+// status, instead of Vite's SPA fallback to the (prerendered) home page.
+function previewLikeVercel(): Plugin {
+  return {
+    name: 'preview-like-vercel',
+    configurePreviewServer(server) {
+      const outDir = path.resolve(server.config.root, server.config.build.outDir)
+      server.middlewares.use((req, res, next) => {
+        if ((req.method !== 'GET' && req.method !== 'HEAD') || !req.headers.accept?.includes('text/html')) return next()
+        const url = new URL(req.url ?? '/', 'http://localhost')
+        const pathname = decodeURIComponent(url.pathname)
+        const file = path.join(outDir, pathname)
+        if (fs.existsSync(file) && fs.statSync(file).isFile()) return next()
+        const index = path.join(file, 'index.html')
+        if (fs.existsSync(index)) {
+          req.url = path.posix.join(url.pathname, 'index.html') + url.search
+          return next()
+        }
+        const notFound = path.join(outDir, '404.html')
+        if (!fs.existsSync(notFound)) return next()
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/html')
+        res.end(fs.readFileSync(notFound))
+      })
+    },
+  }
+}
+
 export default defineConfig({
   plugins: [
     homeHeroPreload(),
+    previewLikeVercel(),
     react(),
     tailwindcss(),
   ],

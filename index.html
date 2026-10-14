@@ -8,18 +8,17 @@
     <meta name="theme-color" content="#020617" />
 
     <!--
-      PLACEHOLDER DOMAIN: https://www.deepmagnam.com is not live yet. When the real domain is known,
-      replace every occurrence of it in this file (canonical, og:url, og:image, twitter:image, JSON-LD),
-      in public/robots.txt and public/sitemap.xml, and update SITE_URL in src/config/site.ts.
+      The domain appears in this file (canonical, og:url, og:image, twitter:image, JSON-LD),
+      public/robots.txt and public/sitemap.xml; keep it in sync with SITE_URL in src/config/site.ts.
     -->
-    <link rel="canonical" href="https://www.deepmagnam.com/" />
+    <link rel="canonical" href="https://www.deepmagnam.in/" />
 
     <!--
-      Fetch Inter with the CSS instead of after it, so first paint is already
-      in Inter and text doesn't re-wrap (layout shift) when the font swaps in.
+      Fetch Plus Jakarta Sans with the CSS instead of after it, so first paint is already
+      in Plus Jakarta Sans and text doesn't re-wrap (layout shift) when the font swaps in.
       Vite resolves this to the same hashed file the @font-face rule uses.
     -->
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -30,15 +29,15 @@
     <meta property="og:site_name" content="Deepmagnam Integrated Solutions" />
     <meta property="og:title" content="Deepmagnam Integrated Solutions | CAD &amp; Software Development" />
     <meta property="og:description" content="Mechanical CAD, FEA (ANSYS), reverse engineering, product development and machine design, plus websites, e-commerce, mobile apps and graphic design." />
-    <meta property="og:url" content="https://www.deepmagnam.com/" />
-    <meta property="og:image" content="https://www.deepmagnam.com/og-image.jpg" />
+    <meta property="og:url" content="https://www.deepmagnam.in/" />
+    <meta property="og:image" content="https://www.deepmagnam.in/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Deepmagnam Integrated Solutions | CAD &amp; Software Development" />
     <meta name="twitter:description" content="Mechanical CAD, FEA (ANSYS), reverse engineering, product development and machine design, plus websites, e-commerce, mobile apps and graphic design." />
-    <meta name="twitter:image" content="https://www.deepmagnam.com/og-image.jpg" />
+    <meta name="twitter:image" content="https://www.deepmagnam.in/og-image.jpg" />
 
     <script type="application/ld+json">
       {
@@ -46,15 +45,47 @@
         "@type": "Organization",
         "name": "Deepmagnam Integrated Solutions",
         "legalName": "Deepmagnam Integrated Solutions",
-        "url": "https://www.deepmagnam.com/",
-        "logo": "https://www.deepmagnam.com/logo.png",
+        "url": "https://www.deepmagnam.in/",
+        "logo": "https://www.deepmagnam.in/logo.png",
         "description": "Mechanical CAD, FEA (ANSYS), reverse engineering, product development and machine design, plus websites, e-commerce, mobile apps and graphic design.",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Coimbatore",
+          "streetAddress": "Venkateswara Colony",
+          "addressLocality": "Pollachi",
           "addressRegion": "Tamil Nadu",
+          "postalCode": "642001",
           "addressCountry": "IN"
         },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+91-8136904472",
+            "areaServed": "Worldwide",
+            "availableLanguage": ["English", "Tamil"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+91-7540001501",
+            "areaServed": "Worldwide",
+            "availableLanguage": ["English", "Tamil"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+91-9789439543",
+            "areaServed": "Worldwide",
+            "availableLanguage": ["English", "Tamil"]
+          }
+        ],
+        "email": "deepmagnam@gmail.com",
+        "sameAs": [
+          "https://www.instagram.com/deepmagnam/",
+          "https://www.linkedin.com/company/deepmagnam/",
+          "https://www.youtube.com/@deepmagnamintegratedsolutions",
+          "https://x.com/DEEPMAGNAM"
+        ],
         "areaServed": "Worldwide",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",

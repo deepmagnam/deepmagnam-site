@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { projects } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Portfolio() {
-  usePageMeta("Portfolio", "Explore our latest projects in mechanical design and digital solutions, from industrial equipment redesign to e-commerce platforms and web portals.");
+  usePageMeta(PAGE_META["/portfolio"]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
@@ -108,7 +109,7 @@ export function Portfolio() {
       {/* Filter Section: always one row. Centred when it fits, swipeable when it
           doesn't, so the bar height stays constant at every width. Only sticks
           when the viewport is tall enough (not on landscape phones). */}
-      <section className="py-3 md:py-6 bg-slate-50 [@media(min-height:500px)]:sticky top-[var(--nav-height)] z-40 border-b border-slate-200">
+      <section className="py-3 md:py-6 bg-slate-50 [@media(min-height:500px)]:sticky top-[var(--nav-offset)] z-40 transition-[top] duration-300 motion-reduce:transition-none border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={filterScrollerRef}

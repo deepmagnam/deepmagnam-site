@@ -2,9 +2,10 @@ import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
 import { testimonials } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Testimonials() {
-  usePageMeta("Testimonials", "Don't just take our word for it. Hear what our clients have to say about working with Deepmagnam Integrated Solutions.");
+  usePageMeta(PAGE_META["/testimonials"]);
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
@@ -70,8 +71,7 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-emerald-500/50 transition-all duration-300 relative"
+                className="relative rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-500/50 hover:bg-emerald-50/60 hover:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)]"
               >
                 {/* Quote Icon */}
                 <div className="absolute top-8 right-8 opacity-10">
@@ -154,8 +154,7 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-                className="bg-white border border-slate-200 rounded-xl p-6 flex items-center justify-center text-center hover:border-emerald-500/50 transition-all duration-300"
+                className="flex items-center justify-center text-center rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-500/50 hover:bg-emerald-50/60 hover:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)]"
               >
                 <span className="text-slate-600 font-semibold">{company}</span>
               </motion.div>
@@ -206,7 +205,7 @@ export function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-500/30 rounded-xl p-8 text-center"
+                className="text-center rounded-lg border border-slate-200 bg-white p-8 shadow-sm"
               >
                 <div className="text-5xl mb-4">{story.icon}</div>
                 <div className="text-5xl font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent mb-4">

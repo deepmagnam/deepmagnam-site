@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import { technologies } from "../data/mockData";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Technologies() {
-  usePageMeta("Technologies", "Industry-leading tools we use: SolidWorks, AutoCAD, CATIA and Fusion 360 for mechanical design, and React, Next.js, Node.js and TypeScript for software.");
+  usePageMeta(PAGE_META["/technologies"]);
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}

@@ -27,3 +27,14 @@ export const routes: RouteObject[] = [
     ],
   },
 ];
+
+// React Router rewrites route objects in place once a lazy route has loaded,
+// so anything that builds more than one router from this config (tests, the
+// prerender) gives each its own copy.
+export function cloneRoutes(list: RouteObject[] = routes): RouteObject[] {
+  return list.map((route) => ({
+    ...route,
+    lazy: route.lazy && typeof route.lazy === "object" ? { ...route.lazy } : route.lazy,
+    children: route.children && cloneRoutes(route.children),
+  })) as RouteObject[];
+}

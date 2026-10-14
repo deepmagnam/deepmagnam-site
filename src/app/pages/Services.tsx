@@ -2,9 +2,10 @@ import { motion } from "motion/react";
 import { mechanicalServices, itServices } from "../data/servicesData";
 import { ChevronRight } from "lucide-react";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { PAGE_META } from "../../config/pageMeta";
 
 export function Services() {
-  usePageMeta("CAD & Software Services", "Outsourced CAD, FEA (ANSYS) and machine design, plus custom web and mobile apps, e-commerce and graphic design. One team for engineering and software.");
+  usePageMeta(PAGE_META["/services"]);
   return (
     <div className="pt-[var(--nav-height)]">
       {/* Hero Section */}
