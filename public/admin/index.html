@@ -1,0 +1,48 @@
+<!doctype html>
+<!--
+  Decap CMS (content editing). Not part of the site's app bundle: Decap is
+  loaded from unpkg, pinned to an exact version with a Subresource Integrity
+  hash. To upgrade, change the version in the URL and recompute the hash:
+    curl -sL https://unpkg.com/decap-cms@VERSION/dist/decap-cms.js | openssl dgst -sha384 -binary | openssl base64 -A
+  Config: ./config.yml. Editor guide: docs/editing-testimonials.md.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Content Manager | Deepmagnam Integrated Solutions</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Absolute: the page is served at /admin (no trailing slash), so a relative URL would miss. -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+  </head>
+  <body>
+    <script
+      src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"
+      integrity="sha384-A/Gdn928CNLufmnGWGs9RM4Q9o8bSNLeJERqBFrBjwzL7FRpoLT3MPF8Tl0+Wd2p"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // A testimonial can't be published without the client's consent. The
+      // build enforces the same rule (src/content/testimonials.ts); this just
+      // tells the editor at save time instead of failing the deploy.
+      function requireConsent({ entry }) {
+        if (entry.get("collection") !== "testimonials") return;
+        const data = entry.get("data");
+        if (data.get("published") && !data.get("consent")) {
+          throw new Error(
+            "“Published” is on, but “Client consent to publish” isn't ticked. Tick consent (only if the client has agreed), or turn off Published.",
+          );
+        }
+      }
+      CMS.registerEventListener({ name: "preSave", handler: requireConsent });
+      CMS.registerEventListener({ name: "prePublish", handler: requireConsent });
+
+      // Log in through this site's own /api/auth, whichever address it's served from.
+      CMS.init({ config: { backend: { base_url: window.location.origin } } });
+    </script>
+  </body>
+</html>

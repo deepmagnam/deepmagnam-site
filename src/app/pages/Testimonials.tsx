@@ -1,8 +1,17 @@
 import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
-import { testimonials } from "../data/mockData";
+import testimonials from "virtual:content/testimonials";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { PAGE_META } from "../../config/pageMeta";
+
+// "Jane Doe" -> "JD"; shown in place of a photo.
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
 
 export function Testimonials() {
   usePageMeta(PAGE_META["/testimonials"]);
@@ -63,59 +72,78 @@ export function Testimonials() {
       {/* Testimonials Grid */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-500/50 hover:bg-emerald-50/60 hover:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)]"
-              >
-                {/* Quote Icon */}
-                <div className="absolute top-8 right-8 opacity-10">
-                  <Quote size={80} className="text-emerald-600" />
-                </div>
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-6">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={20}
-                      className="fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-slate-700 text-lg mb-8 relative z-10">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Client Info */}
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    loading="lazy"
-                    decoding="async"
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-emerald-500"
-                  />
-                  <div>
-                    <h4 className="text-slate-900 font-semibold text-lg">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-emerald-600">{testimonial.role}</p>
-                    <p className="text-slate-600 text-sm">{testimonial.company}</p>
+          {testimonials.length === 0 ? (
+            <p className="text-center text-lg text-slate-600">
+              Client testimonials will be shared here soon.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-[background-color,border-color,box-shadow] duration-300 hover:border-emerald-500/50 hover:bg-emerald-50/60 hover:shadow-[0_0_32px_-4px_rgba(16,185,129,0.35)]"
+                >
+                  {/* Quote Icon */}
+                  <div className="absolute top-8 right-8 opacity-10">
+                    <Quote size={80} className="text-emerald-600" />
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
+                  {/* Rating */}
+                  {testimonial.rating !== undefined && (
+                    <div className="flex gap-1 mb-6" role="img" aria-label={`Rated ${testimonial.rating} out of 5`}>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={20}
+                          className="fill-yellow-400 text-yellow-400"
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Testimonial Text */}
+                  <p className="text-slate-700 text-lg mb-8 relative z-10">
+                    "{testimonial.quote}"
+                  </p>
+
+                  {/* Client Info */}
+                  <div className="flex items-center gap-4">
+                    {testimonial.photo ? (
+                      <img
+                        src={testimonial.photo.src}
+                        srcSet={testimonial.photo.srcSet}
+                        sizes="64px"
+                        alt={testimonial.name}
+                        loading="lazy"
+                        decoding="async"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-full object-cover border-2 border-emerald-500"
+                      />
+                    ) : (
+                      <div
+                        aria-hidden="true"
+                        className="w-16 h-16 shrink-0 rounded-full border-2 border-emerald-500 bg-emerald-50 flex items-center justify-center text-xl font-semibold text-emerald-700"
+                      >
+                        {initials(testimonial.name)}
+                      </div>
+                    )}
+                    <div>
+                      <h4 className="text-slate-900 font-semibold text-lg">
+                        {testimonial.name}
+                      </h4>
+                      {testimonial.role && <p className="text-emerald-600">{testimonial.role}</p>}
+                      {testimonial.company && <p className="text-slate-600 text-sm">{testimonial.company}</p>}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
