@@ -3,6 +3,8 @@ import fs from 'fs'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { contentPlugin } from './vite/content-plugin'
+import { testimonialsCollection } from './src/content/testimonials'
 
 // Preloads the first Home hero slide from the HTML, so it downloads in parallel
 // with the JS bundle instead of after React renders. The <link> is added by an
@@ -77,10 +79,26 @@ function previewLikeVercel(): Plugin {
   }
 }
 
+// Dev server only: Vercel serves public/admin/index.html at /admin, but Vite
+// would hand /admin to the app (and its 404 page).
+function adminDevRewrite(): Plugin {
+  return {
+    name: 'admin-dev-rewrite',
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        if (req.url === '/admin' || req.url === '/admin/') req.url = '/admin/index.html'
+        next()
+      })
+    },
+  }
+}
+
 export default defineConfig({
   plugins: [
     homeHeroPreload(),
     previewLikeVercel(),
+    adminDevRewrite(),
+    contentPlugin([testimonialsCollection]),
     react(),
     tailwindcss(),
   ],

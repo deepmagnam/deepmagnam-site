@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import template from "../index.html?raw";
+import sitemap from "../public/sitemap.xml?raw";
 import { PRERENDER_PAGES, renderPage } from "./entry-server";
 import { PAGE_META } from "./config/pageMeta";
 
@@ -54,6 +55,12 @@ describe("prerender", () => {
     expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
     expect(doc.querySelector('meta[property="og:url"]')).toBeNull();
     expect(doc.querySelector("#root h1")?.textContent).toBe("Page Not Found");
+  });
+
+  it("lists exactly the prerendered pages in sitemap.xml, so /admin stays out of both", () => {
+    const locs = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+    expect(locs).toEqual(Object.keys(PAGE_META).map((path) => `https://www.deepmagnam.in${path}`));
+    expect(PRERENDER_PAGES.some((page) => page.path.startsWith("/admin"))).toBe(false);
   });
 
   it("fails if index.html is missing a tag it fills in", async () => {

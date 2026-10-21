@@ -1,0 +1,20 @@
+{
+  // Code that runs in Node rather than the browser: the Vite config and its
+  // plugins, and the Vercel functions in api/. `npm run build` checks both
+  // this and tsconfig.json.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "strict": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts", "vitest.config.ts", "vite", "api"]
+}
