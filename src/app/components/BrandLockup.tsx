@@ -8,7 +8,7 @@ type BrandLockupProps = {
   imgSizes: string;
   /** Sizing for the "Deepmagnam" line; the second line scales with it. */
   textClassName: string;
-  /** White text, and a white plate behind the mark, for a dark background. */
+  /** White text, and a soft glow around the mark, for a dark background. */
   onDark?: boolean;
 };
 
@@ -18,29 +18,24 @@ type BrandLockupProps = {
 export function BrandLockup({ imgClassName, imgSizes, textClassName, onDark = false }: BrandLockupProps) {
   return (
     <span className="flex h-full items-center">
-      <span className="relative flex h-full shrink-0 items-center">
-        {/* The mark's darker blues fall below 3:1 on a dark background, so
-            there it sits on a white plate: 4px clear of the mark on every side
-            (the img's padding is 8px, 10px from md). Absolutely positioned, so
-            it never moves anything. */}
-        <span
-          aria-hidden="true"
-          data-brand-plate
-          className={`absolute -inset-x-1 inset-y-1 rounded-lg bg-white transition-opacity duration-300 md:inset-y-1.5 ${
-            onDark ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <img
-          src={logoMark256}
-          srcSet={`${logoMark256} 274w, ${logoMark512} 549w`}
-          sizes={imgSizes}
-          alt="Deepmagnam Integrated Solutions logo"
-          decoding="async"
-          width={274}
-          height={256}
-          className={`relative w-auto shrink-0 object-contain ${imgClassName}`}
-        />
-      </span>
+      {/* The mark's darker blues fall below 3:1 on a dark background, so there
+          it gets a soft light glow that follows its shape (drop-shadow, not a
+          box). Both states keep the same filter list so the glow fades. */}
+      <img
+        src={logoMark256}
+        srcSet={`${logoMark256} 274w, ${logoMark512} 549w`}
+        sizes={imgSizes}
+        alt="Deepmagnam Integrated Solutions logo"
+        decoding="async"
+        width={274}
+        height={256}
+        data-brand-mark
+        className={`w-auto shrink-0 object-contain transition-[filter] duration-300 ${
+          onDark
+            ? "[filter:drop-shadow(0_0_1px_rgb(255_255_255/0.6))_drop-shadow(0_0_4px_rgb(255_255_255/0.25))]"
+            : "[filter:drop-shadow(0_0_1px_rgb(255_255_255/0))_drop-shadow(0_0_4px_rgb(255_255_255/0))]"
+        } ${imgClassName}`}
+      />
       <span
         aria-hidden="true"
         data-brand-text
