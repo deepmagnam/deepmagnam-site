@@ -86,9 +86,11 @@ export function Home() {
   ];
 
   return (
-    <div className="pt-[var(--nav-height)] bg-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+    <div className="bg-white">
+      {/* Hero Section. It extends up behind the transparent nav: the top
+          padding takes the nav's place, so the content box is still one
+          screen tall and starts below the nav. */}
+      <section className="relative min-h-[calc(100vh+var(--nav-height))] pt-[var(--nav-height)] flex items-center justify-center overflow-hidden bg-slate-900">
         
         {/* Shuffle Background Images */}
         {/* initial={false}: the first slide shows as soon as it loads, with no fade-in delay */}
@@ -145,10 +147,10 @@ export function Home() {
             be the LCP element), independent of the slide crossfades. */}
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance">
-            Mechanical CAD Design &amp; Software Development
+            IT Services and Engineering Solutions
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-slate-100 max-w-2xl mx-auto text-pretty">
-            Engineering and software solutions for clients worldwide, from our studio in Coimbatore, India.
+            Mechanical CAD design and custom software development for clients worldwide, from our studio in Pollachi, near Coimbatore.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link

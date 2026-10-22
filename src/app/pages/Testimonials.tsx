@@ -16,10 +16,10 @@ const initials = (name: string) =>
 export function Testimonials() {
   usePageMeta(PAGE_META["/testimonials"]);
   return (
-    <div className="pt-[var(--nav-height)]">
+    <div>
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <section className="relative pt-[calc(var(--nav-height)+8rem)] pb-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+        <div className="absolute inset-x-0 bottom-0 top-[var(--nav-height)] opacity-20">
           <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-72 h-72 bg-cyan-500 rounded-full blur-3xl" />
         </div>
