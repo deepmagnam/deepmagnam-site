@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: RAAMSRI2020/deepmagnam-site
+  repo: deepmagnam/deepmagnam-site
   branch: main
   # GitHub login goes through our Vercel function (api/auth.ts, api/callback.ts).
   # base_url is set to the current site's address in index.html, so login
