@@ -1,0 +1,11 @@
+{
+  "name": "EXAMPLE – Jane Doe (sample entry, do not publish)",
+  "published": false,
+  "order": 1,
+  "date": "2026-10-19",
+  "role": "Engineering Manager",
+  "consent": false,
+  "quote": "This is an example testimonial that shows editors how an entry looks. It is unpublished, so it never appears on the website. Replace it with a real one or delete it.",
+  "company": "Example Company Pvt Ltd",
+  "rating": 5
+}
