@@ -1,5 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { act } from "@testing-library/react";
+import { hydrateRoot } from "react-dom/client";
+import { createMemoryRouter, matchRoutes, RouterProvider } from "react-router";
 import template from "../index.html?raw";
+import App from "./app/App";
+import { cloneRoutes } from "./app/routes";
 import sitemap from "../public/sitemap.xml?raw";
 import { PRERENDER_PAGES, renderPage } from "./entry-server";
 import { PAGE_META } from "./config/pageMeta";
@@ -16,7 +21,7 @@ describe("prerender", () => {
   });
 
   it.each([
-    ["/", "Mechanical CAD Design & Software Development", "Deepmagnam Integrated Solutions | CAD & Software Development"],
+    ["/", "IT Services and Engineering Solutions", "Deepmagnam Integrated Solutions | CAD & Software Development"],
     ["/about", "About Deepmagnam Integrated Solutions", "About | Deepmagnam Integrated Solutions"],
     ["/services", "Our Services", "CAD & Software Services | Deepmagnam Integrated Solutions"],
     ["/portfolio", "Our Portfolio", "Portfolio | Deepmagnam Integrated Solutions"],
@@ -66,4 +71,50 @@ describe("prerender", () => {
   it("fails if index.html is missing a tag it fills in", async () => {
     await expect(renderPage(template.replace(/<link rel="canonical"[^>]*>/, ""), "/about")).rejects.toThrow(/canonical/);
   });
+
+  it.each(["/", "/about", "/contact", "/404"])(
+    "%s renders the transparent nav and hydrates without warnings",
+    async (path) => {
+      const doc = parse(await renderPage(template, path));
+      expect(doc.querySelector("#root nav")?.hasAttribute("data-transparent")).toBe(true);
+
+      // Load the page's lazy chunk first, as main.tsx does, then hydrate the
+      // prerendered markup.
+      const routes = cloneRoutes();
+      for (const { route } of matchRoutes(routes, path) ?? []) {
+        if (route.lazy && typeof route.lazy === "object") {
+          const loaded = Object.fromEntries(
+            await Promise.all(
+              Object.entries(route.lazy).map(async ([key, load]) => [key, await (load as () => Promise<unknown>)()]),
+            ),
+          );
+          Object.assign(route, loaded, { lazy: undefined });
+        }
+      }
+      const container = document.createElement("div");
+      container.innerHTML = doc.getElementById("root")!.innerHTML;
+      document.body.append(container);
+
+      const errors = vi.spyOn(console, "error").mockImplementation(() => {});
+      const onRecoverableError = vi.fn();
+      const root = await act(async () =>
+        hydrateRoot(
+          container,
+          <App>
+            <RouterProvider router={createMemoryRouter(routes, { initialEntries: [path] })} />
+          </App>,
+          { onRecoverableError },
+        ),
+      );
+      try {
+        expect(errors).not.toHaveBeenCalled();
+        expect(onRecoverableError).not.toHaveBeenCalled();
+        expect(container.querySelector("nav")?.hasAttribute("data-transparent")).toBe(true);
+      } finally {
+        errors.mockRestore();
+        act(() => root.unmount());
+        container.remove();
+      }
+    },
+  );
 });
