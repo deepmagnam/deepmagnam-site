@@ -170,7 +170,7 @@ export function Portfolio() {
                   <div className="aspect-video overflow-hidden">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt=""
                       loading="lazy"
                       decoding="async"
                       width={800}

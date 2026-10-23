@@ -261,7 +261,7 @@ export function About() {
                 <div className="relative overflow-hidden rounded-xl mb-4">
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt=""
                     loading="lazy"
                     decoding="async"
                     width={400}
